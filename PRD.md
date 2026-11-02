@@ -20,9 +20,9 @@ This is a lead-generation site, not an online booking-and-payment platform. Book
 
 ### Confirmed business facts (from the owner)
 
-- **Services:** airport pickup and drop, outstation trips, local trips, package trips, corporate trips, and all other taxi-related services.
+- **Services:** airport pickup and drop, outstation trips, local trips, package trips and all other taxi-related services. Railway station pickup and corporate hire are not listed as separate services.
 - **Fleet categories:** hatchback, sedan, Ertiga, Innova, Innova Crysta and Innova Hycross, as on the owner's rate card. Specific models and counts are still **[TBD]**.
-- **Custom tours:** customised tour packages are offered on request, in addition to the fixed packages.
+- **Tours:** every tour is customised and planned with the customer on WhatsApp. The listed tours are suggested destinations, with no fixed route, itinerary or inclusions.
 - **Package pricing:** to be shown on the site. The owner will share the price details for reference.
 - **Cities:** Trivandrum and Cochin (Kochi). Both are live today.
 - **Naming:** the owner says "Cochin". Searchers use both "Cochin" and "Kochi", so the site writes **Kochi (Cochin)** in headings and uses both words in page copy and SEO titles.
@@ -110,8 +110,8 @@ Single page with anchored sections at launch; each can be split into its own URL
 | S-1 | Airport transfers: TRV and COK, flight-tracking pickup, meet-and-greet details **[TBD]** | P0 |
 | S-2 | Local hourly rental: 4 hr / 40 km and 8 hr / 80 km packages, with extra-hour and extra-km rates **[TBD]** | P0 |
 | S-3 | Outstation: one-way and round-trip, how fares are calculated | P0 |
-| S-4 | Railway station pickup (Trivandrum Central, Ernakulam Junction/Town) | P0 |
-| S-5 | Corporate, wedding and event hire with an enquiry CTA | P0 |
+| S-4 | ~~Railway station pickup~~ (removed by the owner) | — |
+| S-5 | ~~Corporate, wedding and event hire~~ (removed by the owner) | — |
 | S-7 | "Other requests" block: any taxi-related need not listed (e.g. special occasions, long-term hire) with a Call / WhatsApp CTA | P0 |
 | S-6 | Each service section has its own Call / WhatsApp / Enquire CTA | P0 |
 
@@ -249,7 +249,7 @@ Decided: Astro + Tailwind CSS + plain JavaScript on Vercel. Step-by-step phases 
 
 ```
 /                              Home
-/services                      Services (anchors: airport, local, outstation, railway, corporate)
+/services                      Services (anchors: airport, local, outstation, other)
 /fleet-and-fares               Fleet & Fares (+ fare estimator)
 /tours                         Tour packages
   /tours/munnar, /alleppey, /thekkady, /varkala, /kanyakumari, /kerala-5d-7d   (P1)

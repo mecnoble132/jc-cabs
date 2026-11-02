@@ -42,7 +42,7 @@ const cityRoutes = routes.filter((r) => r.city === cityKey);
 
   <section class="section grid gap-10 lg:grid-cols-2 lg:gap-16">
     <div>
-      <h2>Airport and station pickups</h2>
+      <h2>Airport pickups</h2>
       <p class="mt-3 text-muted">{city.airportText}</p>
       <dl class="mt-5">
         <div class="flex justify-between gap-4 border-b border-line py-3">
@@ -52,10 +52,6 @@ const cityRoutes = routes.filter((r) => r.city === cityKey);
         <div class="flex justify-between gap-4 border-b border-line py-3">
           <dt class="font-medium">Pickup point</dt>
           <dd class="text-right text-muted">TBD</dd>
-        </div>
-        <div class="flex justify-between gap-4 border-b border-line py-3">
-          <dt class="font-medium">Railway</dt>
-          <dd class="text-right text-muted">{city.station}</dd>
         </div>
         <div class="flex justify-between gap-4 border-b border-line py-3">
           <dt class="font-medium">Popular trips</dt>

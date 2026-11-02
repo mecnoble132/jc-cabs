@@ -5,8 +5,8 @@
     "summary": "Pickup and drop at Trivandrum (TRV) and Cochin (COK) airports, for flights at any hour.",
     "points": [
       "Tell us your flight details when you book",
-      "Meet-and-greet and waiting time: TBD",
-      "Fares are on the Fleet & fares page"
+      "Meet-and-greet: TBD",
+      "Waiting: first 30 minutes free, then ₹100 per hour"
     ],
     "message": "Hi, I'd like an airport transfer."
   },
@@ -33,24 +33,13 @@
     "message": "Hi, I'd like an outstation taxi."
   },
   {
-    "id": "railway",
-    "title": "Railway station pickup",
-    "summary": "Pickup and drop at Trivandrum Central and the Ernakulam stations.",
-    "points": ["Tell us your train number when you book", "Waiting charges: TBD"],
-    "message": "Hi, I'd like a railway station pickup."
-  },
-  {
-    "id": "corporate",
-    "title": "Corporate, wedding and event hire",
-    "summary": "Cars and larger vehicles for staff transport, wedding guests and events, with one point of contact.",
-    "points": ["Single vehicles or several at once", "Invoices for corporate bookings: TBD"],
-    "message": "Hi, I'd like to enquire about corporate, wedding or event hire."
-  },
-  {
     "id": "other",
     "title": "Anything else",
     "summary": "We handle all taxi-related requests, including custom tour packages. If it is not listed, ask.",
-    "points": ["Custom tours planned to your request", "Long-term and recurring hire: TBD"],
+    "points": [
+      "Custom tours planned to your request",
+      "Long-term and recurring hire: TBD"
+    ],
     "message": "Hi, I have a taxi request that is not listed on your site."
   }
 ]
