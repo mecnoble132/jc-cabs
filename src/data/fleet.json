@@ -2,7 +2,7 @@
   {
     "id": "hatchback",
     "name": "Hatchback",
-    "models": "TBD",
+    "models": "Wagon R and similar",
     "image": "fleet-hatchback",
     "imageAlt": "White Maruti Suzuki Wagon R hatchback",
     "seats": 4,
@@ -17,7 +17,7 @@
   {
     "id": "sedan",
     "name": "Sedan",
-    "models": "TBD",
+    "models": "Dzire, Amaze and similar",
     "image": "fleet-sedan",
     "imageAlt": "Silver Honda Amaze sedan",
     "seats": 4,
