@@ -10,8 +10,7 @@
     "extraKm": 17,
     "extraHour": 120,
     "shortTripPerHour": 250,
-    "bestFor": "Solo travellers and couples, city trips, short airport transfers",
-    "image": "car-hatchback"
+    "bestFor": "Solo travellers and couples, city trips, short airport transfers"
   },
   {
     "id": "sedan",
@@ -24,8 +23,7 @@
     "extraKm": 18,
     "extraHour": 150,
     "shortTripPerHour": 300,
-    "bestFor": "Families of up to 4, airport pickups, comfortable outstation trips",
-    "image": "car-sedan"
+    "bestFor": "Families of up to 4, airport pickups, comfortable outstation trips"
   },
   {
     "id": "ertiga",
@@ -38,8 +36,7 @@
     "extraKm": 22,
     "extraHour": 180,
     "shortTripPerHour": 350,
-    "bestFor": "Larger families, sightseeing tours, groups with luggage",
-    "image": null
+    "bestFor": "Larger families, sightseeing tours, groups with luggage"
   },
   {
     "id": "innova",
@@ -52,8 +49,7 @@
     "extraKm": 23,
     "extraHour": 200,
     "shortTripPerHour": 400,
-    "bestFor": "Larger families and long trips with luggage",
-    "image": null
+    "bestFor": "Larger families and long trips with luggage"
   },
   {
     "id": "innova-crysta",
@@ -66,8 +62,7 @@
     "extraKm": 23,
     "extraHour": 200,
     "shortTripPerHour": 400,
-    "bestFor": "Comfortable long trips for families and groups",
-    "image": null
+    "bestFor": "Comfortable long trips for families and groups"
   },
   {
     "id": "innova-hycross",
@@ -80,8 +75,7 @@
     "extraKm": 24,
     "extraHour": 250,
     "shortTripPerHour": 400,
-    "bestFor": "Spacious comfort for long trips and special occasions",
-    "image": null
+    "bestFor": "Spacious comfort for long trips and special occasions"
   },
   {
     "id": "traveller",
@@ -94,7 +88,6 @@
     "extraKm": null,
     "extraHour": null,
     "shortTripPerHour": null,
-    "bestFor": "Groups, weddings, corporate trips and long tours",
-    "image": null
+    "bestFor": "Groups, weddings, corporate trips and long tours"
   }
 ]

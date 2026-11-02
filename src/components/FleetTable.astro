@@ -1,14 +1,11 @@
 ---
-import { Image } from 'astro:assets';
 import Button from './Button.astro';
 import Icon from './Icon.astro';
 import fleet from '../data/fleet.json';
 import { rupees } from '../lib/format';
-import { images } from '../lib/images';
 
 // Rate card: local package, extra charges, and the hourly rate for short trips.
-const row =
-  'lg:grid-cols-[minmax(0,2.2fr)_1.1fr_0.9fr_1.1fr_1fr_5rem]';
+const row = 'lg:grid-cols-[minmax(0,2fr)_1.1fr_0.9fr_1.1fr_1fr_5rem]';
 ---
 
 <!-- A ruled list, not cards: fares are tabular, so rows read faster than boxes. -->
@@ -26,72 +23,53 @@ const row =
   </div>
   <ul>
     {
-      fleet.map((car) => {
-        const photo = car.image ? images[car.image] : undefined;
-        return (
-          <li class:list={['grid gap-3 border-b border-line py-4 lg:items-center lg:gap-6', row]}>
-            <div class="flex items-start gap-4">
-              {photo ? (
-                <Image
-                  src={photo}
-                  alt={`${car.name} taxi`}
-                  widths={[224, 336]}
-                  sizes="(min-width: 1024px) 136px, 112px"
-                  loading="lazy"
-                  class="aspect-[4/3] w-28 shrink-0 rounded-lg object-cover object-[center_65%] lg:w-[8.5rem]"
-                />
-              ) : (
-                <div class="grid aspect-[4/3] w-28 shrink-0 place-items-center rounded-lg bg-cream p-2 text-center text-[0.6875rem] text-muted lg:w-[8.5rem]">
-                  Photo coming soon
-                </div>
-              )}
-              <div>
-                <h3>{car.name}</h3>
-                <p class="mt-0.5 text-sm text-muted">{car.bestFor}</p>
-              </div>
-            </div>
-            <p class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+      fleet.map((car) => (
+        <li class:list={['grid gap-3 border-b border-line py-4 lg:items-center lg:gap-6', row]}>
+          <div>
+            <h3>{car.name}</h3>
+            <p class="mt-0.5 text-sm text-muted">{car.bestFor}</p>
+          </div>
+          <p class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+            <span class="inline-flex items-center gap-1.5">
+              <Icon name="users" class="h-4 w-4 text-muted" />
+              {car.seats ? `${car.seats} seats` : 'Seats TBD'}
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <Icon name="bag" class="h-4 w-4 text-muted" />
+              {car.luggage}
+            </span>
+            {car.ac && (
               <span class="inline-flex items-center gap-1.5">
-                <Icon name="users" class="h-4 w-4 text-muted" />
-                {car.seats ? `${car.seats} seats` : 'Seats TBD'}
+                <Icon name="snowflake" class="h-4 w-4 text-muted" />
+                AC
               </span>
-              <span class="inline-flex items-center gap-1.5">
-                <Icon name="bag" class="h-4 w-4 text-muted" />
-                {car.luggage}
-              </span>
-              {car.ac && (
-                <span class="inline-flex items-center gap-1.5">
-                  <Icon name="snowflake" class="h-4 w-4 text-muted" />
-                  AC
-                </span>
-              )}
-            </p>
-            <p class="text-sm">
-              <span class="text-muted lg:hidden">8 hr / 80 km: </span>
-              <span class="font-semibold">{car.packageFare ? rupees(car.packageFare) : 'On request'}</span>
-            </p>
-            <p class="text-sm">
-              <span class="text-muted lg:hidden">Extra: </span>
-              {car.extraKm ? (
-                <span class="font-semibold">
-                  {rupees(car.extraKm)}/km, {rupees(car.extraHour)}/hr
-                </span>
-              ) : (
-                <span class="font-semibold">On request</span>
-              )}
-            </p>
-            <p class="text-sm">
-              <span class="text-muted lg:hidden">Short trips: </span>
+            )}
+          </p>
+          <p class="text-sm">
+            <span class="text-muted lg:hidden">8 hr / 80 km: </span>
+            <span class="font-semibold">{car.packageFare ? rupees(car.packageFare) : 'On request'}</span>
+          </p>
+          <p class="text-sm">
+            <span class="text-muted lg:hidden">Extra: </span>
+            {car.extraKm ? (
               <span class="font-semibold">
-                {car.shortTripPerHour ? `${rupees(car.shortTripPerHour)}/hr` : 'On request'}
+                {rupees(car.extraKm)}/km, {rupees(car.extraHour)}/hr
               </span>
-            </p>
-            <Button href={`/?vehicle=${car.id}#book`} variant="call">
-              Book
-            </Button>
-          </li>
-        );
-      })
+            ) : (
+              <span class="font-semibold">On request</span>
+            )}
+          </p>
+          <p class="text-sm">
+            <span class="text-muted lg:hidden">Short trips: </span>
+            <span class="font-semibold">
+              {car.shortTripPerHour ? `${rupees(car.shortTripPerHour)}/hr` : 'On request'}
+            </span>
+          </p>
+          <Button href={`/?vehicle=${car.id}#book`} variant="call">
+            Book
+          </Button>
+        </li>
+      ))
     }
   </ul>
   <p class="mt-3 max-w-3xl text-xs text-muted">
