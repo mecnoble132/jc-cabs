@@ -6,7 +6,7 @@ Companion to [PRD.md](PRD.md) and [DESIGN.md](DESIGN.md). The PRD says **what** 
 
 | Phase | State |
 |---|---|
-| 0. Setup | Done locally: Astro 7, Tailwind 4, sitemap. **Not done:** git repo, GitHub, Vercel |
+| 0. Setup | Done: Astro 7, Tailwind 4, sitemap, git, GitHub (`mecnoble132/jc-cabs`), Vercel project `jc-cabs`. Live at https://jc-cabs.vercel.app, auto-deploys on every push to `main` |
 | 1. Foundation | Done: layout, header, footer, sticky call bar, contact helpers, site.json |
 | 2. Content and cards | Done: fleet, routes, tours, FAQ, reviews data; five cards; Fleet & Fares, Tours and FAQ pages; home sections |
 | Design v3 | Done: photo-led, light, compact redesign with real photos, form-in-hero, tour tiles and fleet table (see [DESIGN.md](DESIGN.md)). Replaces v2 |
