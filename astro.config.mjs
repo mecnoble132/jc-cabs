@@ -6,8 +6,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: replace with the real domain before launch (needed for sitemap and canonical URLs)
-  site: 'https://jccabs.example',
+  // Vercel default address. Replace with the custom domain once it is connected (needed for sitemap and canonical URLs)
+  site: 'https://jc-cabs.vercel.app',
 
   vite: {
     plugins: [tailwindcss()]
