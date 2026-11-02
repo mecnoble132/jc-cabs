@@ -8,6 +8,7 @@ import TourCard from '../components/TourCard.astro';
 import RouteCard from '../components/RouteCard.astro';
 import ReviewCard from '../components/ReviewCard.astro';
 import CtaBand from '../components/CtaBand.astro';
+import ExampleNote from '../components/ExampleNote.astro';
 import site from '../data/site.json';
 import tours from '../data/tours.json';
 import routes from '../data/routes.json';
@@ -107,6 +108,7 @@ const services = [
     <ul class="mt-6 grid gap-x-10 lg:grid-cols-2">
       {routes.map((route) => <RouteCard route={route} />)}
     </ul>
+    <ExampleNote />
   </section>
 
   {

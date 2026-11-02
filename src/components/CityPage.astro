@@ -5,6 +5,7 @@ import Button from './Button.astro';
 import Icon from './Icon.astro';
 import RouteCard from './RouteCard.astro';
 import CtaBand from './CtaBand.astro';
+import ExampleNote from './ExampleNote.astro';
 import site from '../data/site.json';
 import cities from '../data/cities.json';
 import routes from '../data/routes.json';
@@ -69,6 +70,7 @@ const cityRoutes = routes.filter((r) => r.city === cityKey);
       <ul class="mt-3">
         {cityRoutes.map((route) => <RouteCard route={route} />)}
       </ul>
+      <ExampleNote />
       <p class="mt-4 text-sm text-muted">
         <a href="/fleet-and-fares" class="font-medium text-ink underline underline-offset-4">See all fares</a>{' '}
         for hatchback, sedan, 7-seater and Traveller.

@@ -4,7 +4,7 @@
     "name": "Munnar",
     "duration": "2 days (TBD)",
     "summary": "Tea plantations, misty hills and viewpoints in the Western Ghats.",
-    "startingPrice": null,
+    "startingPrice": 6500,
     "image": "munnar"
   },
   {
@@ -12,7 +12,7 @@
     "name": "Alleppey",
     "duration": "1 to 2 days (TBD)",
     "summary": "Backwater cruises and village life on the Kerala canals.",
-    "startingPrice": null,
+    "startingPrice": 4500,
     "image": "alleppey"
   },
   {
@@ -20,7 +20,7 @@
     "name": "Thekkady",
     "duration": "2 days (TBD)",
     "summary": "Periyar wildlife area, spice plantations and forest walks.",
-    "startingPrice": null,
+    "startingPrice": 6800,
     "image": "thekkady"
   },
   {
@@ -28,7 +28,7 @@
     "name": "Varkala",
     "duration": "1 day (TBD)",
     "summary": "Cliff-top beach, sea views and temple visit near Trivandrum.",
-    "startingPrice": null,
+    "startingPrice": 2800,
     "image": "varkala"
   },
   {
@@ -36,7 +36,7 @@
     "name": "Kanyakumari",
     "duration": "1 day (TBD)",
     "summary": "The southern tip of India, with sunrise and sunset viewpoints and the sea memorials.",
-    "startingPrice": null,
+    "startingPrice": 3800,
     "image": "kanyakumari"
   },
   {
@@ -44,7 +44,7 @@
     "name": "Kerala 5-day and 7-day tours",
     "duration": "5 or 7 days (TBD)",
     "summary": "A combined trip across Kerala's hills, backwaters and beaches.",
-    "startingPrice": null,
+    "startingPrice": 18500,
     "image": "kerala"
   }
 ]

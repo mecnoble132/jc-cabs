@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PhotoHero from '../../components/PhotoHero.astro';
 import Button from '../../components/Button.astro';
 import Icon from '../../components/Icon.astro';
+import ExampleNote from '../../components/ExampleNote.astro';
 import tours from '../../data/tours.json';
 import { rupees } from '../../lib/format';
 import { telLink, waLink } from '../../lib/contact';
@@ -56,6 +57,7 @@ const message = `Hi, I'd like to enquire about the ${tour.name} tour package.`;
         <dt class="font-medium">Vehicles</dt>
         <dd class="text-right text-muted">Hatchback, sedan, 7-seater, Traveller</dd>
       </div>
+      <ExampleNote />
     </dl>
   </section>
 

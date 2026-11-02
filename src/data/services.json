@@ -15,9 +15,9 @@
     "title": "Local hourly rental",
     "summary": "A car and driver for the day within the city, for shopping, meetings or sightseeing.",
     "points": [
-      "4 hours / 40 km package",
-      "8 hours / 80 km package",
-      "Extra hour and extra km rates: TBD"
+      "4 hours / 40 km package: from ₹1,500",
+      "8 hours / 80 km package: from ₹2,600",
+      "Extra hour ₹150, extra km ₹12"
     ],
     "message": "Hi, I'd like a local hourly rental."
   },

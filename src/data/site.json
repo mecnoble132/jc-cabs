@@ -2,22 +2,23 @@
   "name": "JC Cabs",
   "tagline": "Trusted Taxi in Trivandrum & Kochi",
   "description": "Airport transfers, local rentals, outstation trips and Kerala tour packages in Trivandrum and Kochi. Verified drivers, clean AC cars, fixed fares, 24/7.",
+  "ratesAreExamples": true,
   "email": "TBD@example.com",
-  "whatsapp": "910000000000",
-  "whatsappDisplay": "TBD",
+  "whatsapp": "919876543210",
+  "whatsappDisplay": "98765 43210",
   "defaultCity": "trivandrum",
   "cities": {
     "trivandrum": {
       "label": "Trivandrum",
-      "phone": "+910000000001",
-      "phoneDisplay": "TBD",
+      "phone": "+919876543210",
+      "phoneDisplay": "98765 43210",
       "address": "TBD, Trivandrum, Kerala",
       "hours": "Open 24 hours"
     },
     "kochi": {
       "label": "Kochi",
-      "phone": "+910000000002",
-      "phoneDisplay": "TBD",
+      "phone": "+919876543210",
+      "phoneDisplay": "98765 43210",
       "address": "TBD, Kochi, Kerala",
       "hours": "Open 24 hours"
     }
