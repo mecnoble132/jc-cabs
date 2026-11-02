@@ -21,7 +21,7 @@ This is a lead-generation site, not an online booking-and-payment platform. Book
 ### Confirmed business facts (from the owner)
 
 - **Services:** airport pickup and drop, outstation trips, local trips, package trips, corporate trips, and all other taxi-related services.
-- **Fleet classes:** hatchback, sedan, 7-seater cabs, and Traveller (group vehicle). Specific models and counts are still **[TBD]**.
+- **Fleet categories:** hatchback, sedan, Ertiga, Innova, Innova Crysta and Innova Hycross, as on the owner's rate card. Specific models and counts are still **[TBD]**.
 - **Custom tours:** customised tour packages are offered on request, in addition to the fixed packages.
 - **Package pricing:** to be shown on the site. The owner will share the price details for reference.
 - **Cities:** Trivandrum and Cochin (Kochi). Both are live today.
@@ -124,8 +124,7 @@ Single page with anchored sections at launch; each can be split into its own URL
 | F-3 | "Book this car" button on each card, pre-selecting the vehicle in the form / WhatsApp message | P0 |
 | F-4 | Fare estimator: choose pickup, drop, vehicle → indicative fare range with disclaimer. Based on a maintained route/distance table, not live maps pricing | P1 |
 | F-5 | Fleet data stored in an editable data source (CMS or JSON), not hard-coded in markup | P0 |
-| F-6 | Four vehicle classes at launch: **Hatchback, Sedan, 7-seater, Traveller**. Cards are grouped by class; the booking form's vehicle field offers the same four options | P0 |
-| F-7 | Traveller (group vehicle) card states seat count and suits groups, tours, corporate and weddings; pricing may be "on request" **[TBD]** | P0 |
+| F-6 | Six vehicle categories at launch, from the owner's rate card: **Hatchback, Sedan, Ertiga, Innova, Innova Crysta, Innova Hycross**. They are listed in one rate-card table (8 hr / 80 km package, extra km and hour, short-trip hourly rate); the booking form's vehicle field offers the same options | P0 |
 
 ### 6.5 Tour Packages
 
@@ -305,7 +304,7 @@ Timeline assumes content arrives on time; content delay is the most common cause
 4. **Fares:** published per-km rates, or "from" prices and quote on request? Fixed route fares?
 5. **Languages:** English only for launch, or Malayalam (and possibly Hindi/Tamil for tourists) from day one?
 6. **Online payment:** confirm out of scope for v1, or is advance payment required for tours?
-7. **Vehicles:** which models and how many in each of the four classes (hatchback, sedan, 7-seater, Traveller)? How many seats in the Traveller? Are child seats available, and at what charge?
+7. **Vehicles:** which models and how many in each category (hatchback, sedan, Ertiga, Innova, Innova Crysta, Innova Hycross)? Are child seats available, and at what charge?
 12. **Package pricing:** when will the price list arrive? Are prices per vehicle, per person or per group, and do they include driver bata, tolls and stay?
 13. **Custom tours:** how quickly can a custom quote be given, and who handles it in each city?
 14. **Naming:** confirm "Kochi (Cochin)" is acceptable as the on-site spelling.

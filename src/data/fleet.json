@@ -76,18 +76,5 @@
     "extraHour": 250,
     "shortTripPerHour": 400,
     "bestFor": "Spacious comfort for long trips and special occasions"
-  },
-  {
-    "id": "traveller",
-    "name": "Traveller",
-    "models": "TBD",
-    "seats": 12,
-    "luggage": "6 large bags",
-    "ac": true,
-    "packageFare": null,
-    "extraKm": null,
-    "extraHour": null,
-    "shortTripPerHour": null,
-    "bestFor": "Groups, weddings, corporate trips and long tours"
   }
 ]
