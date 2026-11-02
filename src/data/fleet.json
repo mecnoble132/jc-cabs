@@ -1,0 +1,50 @@
+[
+  {
+    "id": "hatchback",
+    "name": "Hatchback",
+    "models": "TBD",
+    "seats": 4,
+    "luggage": "1 large bag",
+    "ac": true,
+    "ratePerKm": null,
+    "minCharge": null,
+    "bestFor": "Solo travellers and couples, city trips, short airport transfers",
+    "image": null
+  },
+  {
+    "id": "sedan",
+    "name": "Sedan",
+    "models": "TBD",
+    "seats": 4,
+    "luggage": "2 large bags",
+    "ac": true,
+    "ratePerKm": null,
+    "minCharge": null,
+    "bestFor": "Families of up to 4, airport pickups, comfortable outstation trips",
+    "image": null
+  },
+  {
+    "id": "7-seater",
+    "name": "7-seater",
+    "models": "TBD",
+    "seats": 6,
+    "luggage": "3 large bags",
+    "ac": true,
+    "ratePerKm": null,
+    "minCharge": null,
+    "bestFor": "Larger families, sightseeing tours, groups with luggage",
+    "image": null
+  },
+  {
+    "id": "traveller",
+    "name": "Traveller",
+    "models": "TBD",
+    "seats": null,
+    "luggage": "TBD",
+    "ac": true,
+    "ratePerKm": null,
+    "minCharge": null,
+    "bestFor": "Groups, weddings, corporate trips and long tours",
+    "image": null
+  }
+]

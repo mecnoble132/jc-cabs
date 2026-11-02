@@ -1,0 +1,8 @@
+[
+  { "id": "trv-kovalam", "city": "trivandrum", "from": "Trivandrum Airport (TRV)", "to": "Kovalam", "fare": null },
+  { "id": "trv-varkala", "city": "trivandrum", "from": "Trivandrum Airport (TRV)", "to": "Varkala", "fare": null },
+  { "id": "trv-kanyakumari", "city": "trivandrum", "from": "Trivandrum", "to": "Kanyakumari", "fare": null },
+  { "id": "kochi-munnar", "city": "kochi", "from": "Kochi", "to": "Munnar", "fare": null },
+  { "id": "cok-alleppey", "city": "kochi", "from": "Cochin Airport (COK)", "to": "Alleppey", "fare": null },
+  { "id": "kochi-thekkady", "city": "kochi", "from": "Kochi", "to": "Thekkady", "fare": null }
+]

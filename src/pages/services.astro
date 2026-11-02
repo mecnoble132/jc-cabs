@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoHero from '../components/PhotoHero.astro';
+import Button from '../components/Button.astro';
+import CtaBand from '../components/CtaBand.astro';
+import services from '../data/services.json';
+import { waLink } from '../lib/contact';
+---
+
+<BaseLayout
+  title="Taxi Services in Trivandrum and Kochi (Cochin) | Airport, Local, Outstation | JC Cabs"
+  description="Airport transfers, local hourly rental, outstation trips, railway station pickup and corporate, wedding and event hire in Trivandrum and Kochi (Cochin)."
+  overlay
+>
+  <PhotoHero
+    image="kerala"
+    alt="A houseboat on the Kerala backwaters"
+    title="Taxi services"
+    intro="Airport, local, outstation, railway and event travel in Trivandrum and Kochi (Cochin)."
+  />
+
+  <section class="mx-auto max-w-[1200px] px-5 py-6 lg:px-8 lg:py-10">
+    {
+      services.map((service) => (
+        <section
+          id={service.id}
+          class="grid scroll-mt-24 gap-4 border-b border-line py-8 last:border-0 lg:grid-cols-[1fr_2fr] lg:gap-12"
+        >
+          <div>
+            <h2>{service.title}</h2>
+            <p class="mt-2 text-muted">{service.summary}</p>
+          </div>
+          <div>
+            <ul class="list-disc space-y-1.5 pl-5">
+              {service.points.map((point) => <li>{point}</li>)}
+            </ul>
+            <div class="mt-5">
+              <Button href={waLink(service.message)} variant="call" track="click_whatsapp" arrow>
+                Enquire on WhatsApp
+              </Button>
+            </div>
+          </div>
+        </section>
+      ))
+    }
+  </section>
+
+  <CtaBand />
+</BaseLayout>

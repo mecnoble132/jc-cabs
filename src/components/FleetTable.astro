@@ -1,0 +1,60 @@
+---
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import fleet from '../data/fleet.json';
+import { rupees } from '../lib/format';
+---
+
+<!-- A ruled list, not cards: fares are tabular, so rows read faster than boxes. -->
+<div>
+  <div
+    class="hidden grid-cols-[minmax(0,2fr)_1.2fr_0.7fr_0.7fr_6rem] gap-6 border-b border-ink pb-2 text-xs font-medium text-muted lg:grid"
+    aria-hidden="true"
+  >
+    <span>Vehicle</span>
+    <span>Capacity</span>
+    <span>Per km</span>
+    <span>Minimum</span>
+    <span></span>
+  </div>
+  <ul>
+    {
+      fleet.map((car) => (
+        <li class="grid gap-3 border-b border-line py-4 lg:grid-cols-[minmax(0,2fr)_1.2fr_0.7fr_0.7fr_6rem] lg:items-center lg:gap-6">
+          <div>
+            <h3>{car.name}</h3>
+            <p class="mt-0.5 text-sm text-muted">{car.bestFor}</p>
+            <p class="mt-0.5 text-xs text-muted">Models: {car.models}</p>
+          </div>
+          <p class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+            <span class="inline-flex items-center gap-1.5">
+              <Icon name="users" class="h-4 w-4 text-muted" />
+              {car.seats ? `${car.seats} seats` : 'Seats TBD'}
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <Icon name="bag" class="h-4 w-4 text-muted" />
+              {car.luggage}
+            </span>
+            {car.ac && (
+              <span class="inline-flex items-center gap-1.5">
+                <Icon name="snowflake" class="h-4 w-4 text-muted" />
+                AC
+              </span>
+            )}
+          </p>
+          <p class="text-sm">
+            <span class="text-muted lg:hidden">Per km: </span>
+            <span class="font-semibold">{rupees(car.ratePerKm)}</span>
+          </p>
+          <p class="text-sm">
+            <span class="text-muted lg:hidden">Minimum: </span>
+            <span class="font-semibold">{rupees(car.minCharge)}</span>
+          </p>
+          <Button href={`/?vehicle=${car.id}#book`} variant="call">
+            Book
+          </Button>
+        </li>
+      ))
+    }
+  </ul>
+</div>

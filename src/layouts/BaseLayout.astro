@@ -1,0 +1,56 @@
+---
+import '../styles/global.css';
+import site from '../data/site.json';
+import type { CityKey } from '../lib/contact';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import StickyContactBar from '../components/StickyContactBar.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Set on city pages so Call buttons dial the local office. */
+  city?: CityKey;
+  /** Let a full-bleed hero sit under the floating navbar (home page). Other pages get top padding. */
+  overlay?: boolean;
+}
+
+const { title, description = site.description, city, overlay = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-full focus:bg-brass-light focus:px-5 focus:py-3 focus:font-semibold focus:text-forest"
+    >
+      Skip to content
+    </a>
+    <Header city={city} />
+    <main id="main" class:list={[!overlay && 'pt-16 lg:pt-20']}>
+      <slot />
+    </main>
+    <!-- Bottom padding keeps the footer's last row clear of the mobile sticky bar -->
+    <div class="bg-forest pb-24 lg:pb-0">
+      <Footer />
+    </div>
+    <StickyContactBar city={city} />
+  </body>
+</html>

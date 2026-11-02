@@ -1,0 +1,29 @@
+---
+import site from '../data/site.json';
+import { telLink, waLink, type CityKey } from '../lib/contact';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  /** City pages pass their city so Call dials the local office; other pages use the default city. */
+  city?: CityKey;
+}
+
+const { city } = Astro.props;
+---
+
+<!-- Mobile only. Hidden from 1024px, where the header carries the buttons. -->
+<div
+  class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/95 p-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] backdrop-blur lg:hidden"
+>
+  <div class="grid grid-cols-2 gap-2">
+    <Button href={telLink(city)} variant="call" track="click_call" city={city ?? site.defaultCity} class="min-h-12">
+      <Icon name="phone" class="h-4 w-4" />
+      Call
+    </Button>
+    <Button href={waLink()} variant="whatsapp" track="click_whatsapp" class="min-h-12">
+      <Icon name="chat" class="h-4 w-4" />
+      WhatsApp
+    </Button>
+  </div>
+</div>

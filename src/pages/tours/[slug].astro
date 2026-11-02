@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PhotoHero from '../../components/PhotoHero.astro';
+import Button from '../../components/Button.astro';
+import Icon from '../../components/Icon.astro';
+import tours from '../../data/tours.json';
+import { rupees } from '../../lib/format';
+import { telLink, waLink } from '../../lib/contact';
+
+export function getStaticPaths() {
+  return tours.map((tour) => ({ params: { slug: tour.slug }, props: { tour } }));
+}
+
+const { tour } = Astro.props;
+const others = tours.filter((t) => t.slug !== tour.slug);
+const message = `Hi, I'd like to enquire about the ${tour.name} tour package.`;
+---
+
+<BaseLayout
+  title={`${tour.name} Tour Package from Trivandrum and Kochi (Cochin) | JC Cabs`}
+  description={`${tour.summary} Private taxi tour with a driver from Trivandrum or Kochi (Cochin).`}
+  overlay
+>
+  <PhotoHero image={tour.image ?? 'kerala'} alt={`${tour.name}, Kerala`} title={`${tour.name} tour`} intro={tour.summary}>
+    <div class="mt-5 flex flex-col gap-2 sm:flex-row">
+      <Button href={waLink(message)} variant="whatsapp" track="tour_enquire">
+        <Icon name="chat" class="h-4 w-4" />
+        Enquire on WhatsApp
+      </Button>
+      <Button href={telLink()} variant="call-dark" track="click_call">
+        <Icon name="phone" class="h-4 w-4" />
+        Call
+      </Button>
+    </div>
+  </PhotoHero>
+
+  <section class="section grid gap-10 lg:grid-cols-[2fr_1fr] lg:gap-16">
+    <div>
+      <h2>Itinerary</h2>
+      <p class="mt-3 text-muted">
+        Day-by-day itinerary: TBD. Tell us your dates and group size and we will plan it around you.
+      </p>
+      <h2 class="mt-8">Included and not included</h2>
+      <p class="mt-3 text-muted">Inclusions and exclusions (driver bata, tolls, parking, stay): TBD.</p>
+    </div>
+    <dl class="self-start">
+      <div class="flex justify-between gap-4 border-y border-line py-3">
+        <dt class="font-medium">Duration</dt>
+        <dd class="text-right text-muted">{tour.duration}</dd>
+      </div>
+      <div class="flex justify-between gap-4 border-b border-line py-3">
+        <dt class="font-medium">Starting from</dt>
+        <dd class="text-right font-semibold">{rupees(tour.startingPrice)}</dd>
+      </div>
+      <div class="flex justify-between gap-4 border-b border-line py-3">
+        <dt class="font-medium">Vehicles</dt>
+        <dd class="text-right text-muted">Hatchback, sedan, 7-seater, Traveller</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="bg-cream">
+    <div class="section">
+      <h2>Other tours</h2>
+      <ul class="mt-4 grid gap-x-10 sm:grid-cols-2">
+        {
+          others.map((other) => (
+            <li class="border-b border-line">
+              <a href={`/tours/${other.slug}`} class="flex items-center justify-between gap-4 py-3 font-medium">
+                {other.name}
+                <Icon name="arrow" class="h-4 w-4 text-muted" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-5 text-sm text-muted">
+        Want something different? <a href="/tours" class="font-medium text-ink underline underline-offset-4">Ask for a custom tour</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

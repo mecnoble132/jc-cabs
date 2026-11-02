@@ -1,0 +1,19 @@
+---
+interface Props {
+  q: string;
+  a: string;
+}
+
+const { q, a } = Astro.props;
+---
+
+<!-- Native <details>: accessible and works without JavaScript -->
+<details class="group border-b border-line">
+  <summary
+    class="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 py-3 font-medium [&::-webkit-details-marker]:hidden"
+  >
+    {q}
+    <span class="text-xl leading-none text-muted transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+  </summary>
+  <p class="pb-4 text-muted">{a}</p>
+</details>

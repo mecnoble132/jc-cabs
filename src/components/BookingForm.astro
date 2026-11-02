@@ -1,0 +1,92 @@
+---
+import fleet from '../data/fleet.json';
+import site from '../data/site.json';
+
+// Trip types follow the pattern used by established Indian cab sites (one way, round trip, local, airport).
+const tripTypes = ['One way', 'Round trip', 'Local', 'Airport'];
+const field =
+  'mt-1 h-11 w-full rounded-lg border border-line bg-white px-3 text-base text-ink placeholder:text-muted/70 focus:border-forest';
+const label = 'block text-xs font-medium text-muted';
+---
+
+<!-- For now the form hands the trip details to WhatsApp. Emailing the owner arrives with Phase 4. -->
+<form id="quick-book" data-wa={site.whatsapp} class="rounded-xl bg-white p-4 text-ink shadow-[0_10px_40px_rgba(0,0,0,0.25)]" aria-label="Quick booking">
+  <fieldset class="mb-3">
+    <legend class="sr-only">Trip type</legend>
+    <div class="flex w-full rounded-lg bg-cream p-1 text-[0.8125rem] sm:inline-flex sm:w-auto sm:text-sm">
+      {
+        tripTypes.map((type, i) => (
+          <label class="flex-1 cursor-pointer sm:flex-none">
+            <input type="radio" name="trip" value={type} checked={i === 0} class="peer sr-only" />
+            <span class="block rounded-md px-2 py-1.5 text-center font-medium sm:px-3 text-muted peer-checked:bg-white peer-checked:text-ink peer-checked:shadow-sm peer-focus-visible:outline-2 peer-focus-visible:outline-forest">
+              {type}
+            </span>
+          </label>
+        ))
+      }
+    </div>
+  </fieldset>
+
+  <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-[1.3fr_1.3fr_1fr_0.8fr_1fr_auto] lg:items-end">
+    <div>
+      <label for="qb-pickup" class={label}>Pickup</label>
+      <input id="qb-pickup" name="pickup" type="text" required placeholder="Airport, hotel or address" class={field} autocomplete="off" />
+    </div>
+    <div>
+      <label for="qb-drop" class={label}>Drop</label>
+      <input id="qb-drop" name="drop" type="text" placeholder="Destination" class={field} autocomplete="off" />
+    </div>
+    <div>
+      <label for="qb-date" class={label}>Date</label>
+      <input id="qb-date" name="date" type="date" required class={field} />
+    </div>
+    <div>
+      <label for="qb-time" class={label}>Time</label>
+      <input id="qb-time" name="time" type="time" class={field} />
+    </div>
+    <div>
+      <label for="qb-vehicle" class={label}>Vehicle</label>
+      <select id="qb-vehicle" name="vehicle" class={field}>
+        <option value="">Any</option>
+        {fleet.map((car) => <option value={car.id}>{car.name}</option>)}
+      </select>
+    </div>
+    <button
+      type="submit"
+      class="inline-flex h-11 items-center justify-center rounded-lg bg-brass-light px-5 text-sm font-semibold whitespace-nowrap text-forest transition-colors hover:bg-brass sm:col-span-2 lg:col-span-1"
+    >
+      Get a quote
+    </button>
+  </div>
+  <p class="mt-2 text-xs text-muted">Opens WhatsApp with your trip details. We confirm the fare and driver.</p>
+</form>
+
+<script>
+  const form = document.getElementById('quick-book') as HTMLFormElement | null;
+  if (form) {
+    // Pre-select a vehicle when arriving from a "Book this car" link, e.g. /?vehicle=sedan
+    const wanted = new URLSearchParams(location.search).get('vehicle');
+    const select = form.elements.namedItem('vehicle') as HTMLSelectElement;
+    if (wanted) select.value = wanted;
+
+    // Don't allow past dates
+    const dateInput = form.elements.namedItem('date') as HTMLInputElement;
+    dateInput.min = new Date().toISOString().slice(0, 10);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const vehicle = select.selectedOptions[0]?.text;
+      const lines = [
+        "Hi, I'd like a taxi quote.",
+        `Trip: ${data.get('trip')}`,
+        `Pickup: ${data.get('pickup')}`,
+        data.get('drop') ? `Drop: ${data.get('drop')}` : '',
+        `Date: ${data.get('date')}${data.get('time') ? ' at ' + data.get('time') : ''}`,
+        select.value ? `Vehicle: ${vehicle}` : '',
+      ].filter(Boolean);
+      const url = `https://wa.me/${form.dataset.wa}?text=${encodeURIComponent(lines.join('\n'))}`;
+      window.open(url, '_blank', 'noopener');
+    });
+  }
+</script>

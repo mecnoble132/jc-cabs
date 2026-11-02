@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TourCard from '../../components/TourCard.astro';
+import Button from '../../components/Button.astro';
+import Icon from '../../components/Icon.astro';
+import tours from '../../data/tours.json';
+import { waLink } from '../../lib/contact';
+
+const customMessage =
+  "Hi, I'd like a custom tour. Destinations: \nNumber of days: \nGroup size: \nPreferred vehicle: ";
+---
+
+<BaseLayout
+  title="Kerala Tour Packages from Trivandrum and Kochi (Cochin) | JC Cabs"
+  description="Munnar, Alleppey, Thekkady, Varkala, Kanyakumari and Kerala 5 and 7 day tour packages by taxi, or ask for a custom tour."
+>
+  <section class="section">
+    <h1>Tour packages</h1>
+    <p class="mt-3 max-w-xl text-muted">
+      Choose a ready-made package, or tell us what you want and we will plan it.
+    </p>
+
+    <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        tours.map((tour, i) => (
+          <TourCard
+            tour={tour}
+            featured={i === 0}
+            class={i === 0 ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : i === 5 ? 'sm:col-span-2 lg:col-span-1' : ''}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="bg-cream">
+    <div class="section">
+      <h2>Want something different?</h2>
+      <p class="mt-2 max-w-xl text-muted">
+        We plan custom tours to your request. Tell us the places, the number of days, your group size and the
+        vehicle you prefer, and we will send you a quote.
+      </p>
+      <div class="mt-5">
+        <Button href={waLink(customMessage)} variant="whatsapp" track="tour_enquire">
+          <Icon name="chat" class="h-4 w-4" />
+          Plan my tour on WhatsApp
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

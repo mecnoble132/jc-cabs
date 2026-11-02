@@ -1,0 +1,60 @@
+---
+import site from '../data/site.json';
+
+const field =
+  'mt-1 h-11 w-full rounded-lg border border-line bg-white px-3 text-base text-ink placeholder:text-muted/70 focus:border-forest';
+const label = 'block text-xs font-medium text-muted';
+const cities = Object.entries(site.cities);
+---
+
+<!-- Hands the enquiry to WhatsApp for now. Emailing the owner arrives with Phase 4. -->
+<form id="contact-form" data-wa={site.whatsapp} class="grid gap-3 sm:grid-cols-2" aria-label="Enquiry form">
+  <div>
+    <label for="cf-name" class={label}>Name</label>
+    <input id="cf-name" name="name" type="text" required autocomplete="name" class={field} />
+  </div>
+  <div>
+    <label for="cf-phone" class={label}>Phone</label>
+    <input id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" class={field} />
+  </div>
+  <div class="sm:col-span-2">
+    <label for="cf-city" class={label}>City</label>
+    <select id="cf-city" name="city" class={field}>
+      {cities.map(([key, city]) => <option value={city.label}>{city.label}</option>)}
+    </select>
+  </div>
+  <div class="sm:col-span-2">
+    <label for="cf-message" class={label}>Message</label>
+    <textarea
+      id="cf-message"
+      name="message"
+      rows="4"
+      required
+      class="mt-1 w-full rounded-lg border border-line bg-white px-3 py-2 text-base text-ink focus:border-forest"
+    ></textarea>
+  </div>
+  <div class="sm:col-span-2">
+    <button
+      type="submit"
+      class="inline-flex h-11 items-center justify-center rounded-lg bg-brass-light px-5 text-sm font-semibold text-forest transition-colors hover:bg-brass"
+    >
+      Send on WhatsApp
+    </button>
+    <p class="mt-2 text-xs text-muted">Opens WhatsApp with your message. We reply there.</p>
+  </div>
+</form>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const d = new FormData(form);
+    const lines = [
+      `Hi, this is ${d.get('name')}.`,
+      d.get('phone') ? `Phone: ${d.get('phone')}` : '',
+      `City: ${d.get('city')}`,
+      String(d.get('message')),
+    ].filter(Boolean);
+    window.open(`https://wa.me/${form.dataset.wa}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
+  });
+</script>

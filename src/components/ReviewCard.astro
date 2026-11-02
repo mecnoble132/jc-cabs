@@ -1,0 +1,30 @@
+---
+interface Props {
+  review: {
+    quote: string;
+    name: string;
+    trip?: string;
+    /** e.g. "Google review" or "Customer", so nothing looks invented */
+    source: string;
+    rating?: number;
+  };
+}
+
+const { review } = Astro.props;
+---
+
+<figure class="flex h-full flex-col gap-3 border-t border-ink pt-4">
+  {
+    review.rating && (
+      <p class="text-sm font-semibold" aria-label={`${review.rating} out of 5 stars`}>
+        {review.rating} / 5
+      </p>
+    )
+  }
+  <blockquote class="text-base leading-snug">&ldquo;{review.quote}&rdquo;</blockquote>
+  <figcaption class="mt-auto text-sm text-muted">
+    <span class="font-semibold text-ink">{review.name}</span>
+    {review.trip && <span> &middot; {review.trip}</span>}
+    <span class="block">{review.source}</span>
+  </figcaption>
+</figure>

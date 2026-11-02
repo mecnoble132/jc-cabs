@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FaqItem from '../components/FaqItem.astro';
+import faq from '../data/faq.json';
+---
+
+<BaseLayout
+  title="Taxi Booking FAQ | JC Cabs Trivandrum and Kochi (Cochin)"
+  description="Answers about booking, payment, cancellation, luggage, child seats, pets and night travel with JC Cabs."
+>
+  <section class="mx-auto max-w-2xl px-5 py-12 lg:px-8 lg:py-[4.5rem]">
+    <h1>Frequently asked questions</h1>
+    <div class="mt-8 border-t border-line">
+      {faq.map((item) => <FaqItem q={item.q} a={item.a} />)}
+    </div>
+  </section>
+</BaseLayout>

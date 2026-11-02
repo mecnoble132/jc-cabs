@@ -1,0 +1,62 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { rupees } from '../lib/format';
+import { images } from '../lib/images';
+
+interface Props {
+  tour: {
+    slug: string;
+    name: string;
+    duration: string;
+    summary: string;
+    startingPrice: number | null;
+    /** File name (without .jpg) in src/assets/images */
+    image: string | null;
+  };
+  /** The large tile on the grid. */
+  featured?: boolean;
+  class?: string;
+}
+
+const { tour, featured = false, class: cls = '' } = Astro.props;
+const photo = tour.image ? images[tour.image] : undefined;
+---
+
+<!-- Image-led tile: the photo is the content, the text sits on it. The whole tile opens the tour's page. -->
+<a
+  href={`/tours/${tour.slug}`}
+  data-theme="dark"
+  class:list={[
+    'group relative block overflow-hidden rounded-xl bg-forest',
+    featured ? 'aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[28rem]' : 'aspect-[4/3]',
+    cls,
+  ]}
+>
+  {
+    photo && (
+      <Image
+        src={photo}
+        alt={`${tour.name}, Kerala`}
+        widths={[480, 800, 1200]}
+        sizes={featured ? '(min-width: 1024px) 66vw, 100vw' : '(min-width: 1024px) 33vw, 100vw'}
+        loading="lazy"
+        class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+      />
+    )
+  }
+  <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" aria-hidden="true"></div>
+
+  <span class="absolute top-3 right-3 grid h-8 w-8 place-items-center rounded-full bg-white/90 text-forest transition-colors group-hover:bg-white" aria-hidden="true">
+    <Icon name="arrow-up-right" class="h-4 w-4" />
+  </span>
+
+  <div class="absolute inset-x-0 bottom-0 p-4 text-white">
+    <p class="text-xs text-white/80">{tour.duration}</p>
+    <h3 class:list={[featured && 'lg:text-2xl']}>{tour.name}</h3>
+    <p class="mt-1 text-sm text-white/85">
+      From <span class="font-semibold text-white">{rupees(tour.startingPrice)}</span>
+    </p>
+  </div>
+  <span class="sr-only">View the {tour.name} tour</span>
+</a>

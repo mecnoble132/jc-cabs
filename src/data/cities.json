@@ -1,0 +1,24 @@
+{
+  "trivandrum": {
+    "heading": "Trivandrum",
+    "image": "trivandrum",
+    "imageAlt": "Lighthouse and beach at Kovalam near Trivandrum",
+    "intro": "Airport pickups, Kovalam and Varkala trips, and day tours to Kanyakumari, from our Trivandrum office.",
+    "airport": "Trivandrum International Airport (TRV)",
+    "airportText": "We pick up and drop at Trivandrum International Airport for flights at any hour. Tell us your flight details when you book.",
+    "station": "Trivandrum Central railway station",
+    "nearby": "Kovalam, Varkala, Ponmudi and Kanyakumari",
+    "ctaHeading": "Need a taxi in Trivandrum?"
+  },
+  "kochi": {
+    "heading": "Kochi (Cochin)",
+    "image": "alleppey",
+    "imageAlt": "A houseboat on the Kerala backwaters near Kochi",
+    "intro": "Airport pickups at Cochin International, city and Fort Kochi trips, and drives to Munnar, Alleppey and Thekkady.",
+    "airport": "Cochin International Airport (COK)",
+    "airportText": "We pick up and drop at Cochin International Airport for flights at any hour. Tell us your flight details when you book.",
+    "station": "Ernakulam Junction and Ernakulam Town stations",
+    "nearby": "Fort Kochi, Munnar, Alleppey and Thekkady",
+    "ctaHeading": "Need a taxi in Kochi?"
+  }
+}

@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoHero from './PhotoHero.astro';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import RouteCard from './RouteCard.astro';
+import CtaBand from './CtaBand.astro';
+import site from '../data/site.json';
+import cities from '../data/cities.json';
+import routes from '../data/routes.json';
+import { telLink, waLink, type CityKey } from '../lib/contact';
+
+interface Props {
+  cityKey: CityKey;
+}
+
+const { cityKey } = Astro.props;
+const city = cities[cityKey];
+const office = site.cities[cityKey];
+const cityRoutes = routes.filter((r) => r.city === cityKey);
+---
+
+<BaseLayout
+  title={`Taxi in ${city.heading} | Airport, Local and Outstation Cabs | JC Cabs`}
+  description={`${city.intro} Hatchback, sedan, 7-seater and Traveller cabs, open 24 hours.`}
+  city={cityKey}
+  overlay
+>
+  <PhotoHero image={city.image} alt={city.imageAlt} title={`Taxi in ${city.heading}`} intro={city.intro}>
+    <div class="mt-5 flex flex-col gap-2 sm:flex-row">
+      <Button href="/#book" variant="book" arrow>Book now</Button>
+      <Button href={telLink(cityKey)} variant="call-dark" track="click_call" city={cityKey}>
+        <Icon name="phone" class="h-4 w-4" />
+        Call {office.label}
+      </Button>
+      <Button href={waLink(`Hi, I'd like a taxi in ${office.label}.`)} variant="whatsapp" track="click_whatsapp">
+        <Icon name="chat" class="h-4 w-4" />
+        WhatsApp
+      </Button>
+    </div>
+  </PhotoHero>
+
+  <section class="section grid gap-10 lg:grid-cols-2 lg:gap-16">
+    <div>
+      <h2>Airport and station pickups</h2>
+      <p class="mt-3 text-muted">{city.airportText}</p>
+      <dl class="mt-5">
+        <div class="flex justify-between gap-4 border-b border-line py-3">
+          <dt class="font-medium">Airport</dt>
+          <dd class="text-right text-muted">{city.airport}</dd>
+        </div>
+        <div class="flex justify-between gap-4 border-b border-line py-3">
+          <dt class="font-medium">Pickup point</dt>
+          <dd class="text-right text-muted">TBD</dd>
+        </div>
+        <div class="flex justify-between gap-4 border-b border-line py-3">
+          <dt class="font-medium">Railway</dt>
+          <dd class="text-right text-muted">{city.station}</dd>
+        </div>
+        <div class="flex justify-between gap-4 border-b border-line py-3">
+          <dt class="font-medium">Popular trips</dt>
+          <dd class="text-right text-muted">{city.nearby}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div>
+      <h2>Popular routes from {office.label}</h2>
+      <ul class="mt-3">
+        {cityRoutes.map((route) => <RouteCard route={route} />)}
+      </ul>
+      <p class="mt-4 text-sm text-muted">
+        <a href="/fleet-and-fares" class="font-medium text-ink underline underline-offset-4">See all fares</a>{' '}
+        for hatchback, sedan, 7-seater and Traveller.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-cream">
+    <div class="section grid gap-8 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <h2>Our {office.label} office</h2>
+        <dl class="mt-5">
+          <div class="flex justify-between gap-4 border-b border-line py-3">
+            <dt class="font-medium">Address</dt>
+            <dd class="text-right text-muted">{office.address}</dd>
+          </div>
+          <div class="flex justify-between gap-4 border-b border-line py-3">
+            <dt class="font-medium">Hours</dt>
+            <dd class="text-right text-muted">{office.hours}</dd>
+          </div>
+          <div class="flex justify-between gap-4 border-b border-line py-3">
+            <dt class="font-medium">Phone</dt>
+            <dd class="text-right">
+              <a href={telLink(cityKey)} data-track="click_call" data-city={cityKey} class="underline underline-offset-4">
+                {office.phoneDisplay}
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+      <!-- Google Maps embed goes here once the office address is confirmed -->
+      <div class="grid aspect-[16/10] place-items-center rounded-xl border border-line bg-white p-4 text-center text-sm text-muted">
+        Map appears once the office address is confirmed.
+      </div>
+    </div>
+  </section>
+
+  <CtaBand city={cityKey} heading={city.ctaHeading} />
+</BaseLayout>

@@ -1,0 +1,128 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BookingForm from '../components/BookingForm.astro';
+import Icon from '../components/Icon.astro';
+import FleetTable from '../components/FleetTable.astro';
+import TourCard from '../components/TourCard.astro';
+import RouteCard from '../components/RouteCard.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import site from '../data/site.json';
+import tours from '../data/tours.json';
+import routes from '../data/routes.json';
+import reviews from '../data/reviews.json';
+import { images } from '../lib/images';
+
+const trust = ['Open 24/7', 'Verified drivers', 'Clean AC cars', 'Fixed fares'];
+const services = [
+  { label: 'Airport transfers', href: '/services#airport' },
+  { label: 'Local rental', href: '/services#local' },
+  { label: 'Outstation trips', href: '/services#outstation' },
+  { label: 'Tour packages', href: '/tours' },
+];
+---
+
+<BaseLayout title={`${site.name} | ${site.tagline}`} overlay>
+  <!--
+    Photo hero with the booking form inside it (supahero.io image-led hero, Savaari-style form-in-hero).
+    The photo carries the page; the headline and form sit low on it.
+  -->
+  <section data-theme="dark" class="relative isolate flex min-h-[34rem] items-end overflow-hidden text-white lg:min-h-[44rem]">
+    <Image
+      src={images.hero}
+      alt="A road winding through tea plantations near Munnar, Kerala"
+      widths={[800, 1280, 1920]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      class="absolute inset-0 -z-10 h-full w-full object-cover"
+    />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-t from-black/80 via-black/35 to-black/25" aria-hidden="true"></div>
+
+    <div class="mx-auto w-full max-w-[1200px] px-5 pt-28 pb-6 lg:px-8 lg:pb-10">
+      <h1 class="max-w-xl">{site.tagline}</h1>
+      <p class="mt-3 max-w-md text-white/85">
+        Airport transfers, local and outstation trips, and Kerala tours. Verified drivers, clean AC cars and
+        fixed fares.
+      </p>
+      <div id="book" class="mt-6 scroll-mt-24">
+        <BookingForm />
+      </div>
+      <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-xs text-white/80">
+        {trust.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Services: four plain links, no boxes -->
+  <section class="mx-auto max-w-[1200px] px-5 pt-8 lg:px-8 lg:pt-12">
+    <ul class="grid gap-x-8 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        services.map((s) => (
+          <li class="border-b border-line">
+            <a href={s.href} class="group flex items-center justify-between gap-3 py-3 font-medium">
+              {s.label}
+              <Icon name="arrow-up-right" class="h-4 w-4 text-muted transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Tours: photo tiles, one large and five small -->
+  <section class="section">
+    <div class="flex items-end justify-between gap-4">
+      <h2>Kerala tour packages</h2>
+      <a href="/tours" class="shrink-0 text-sm font-medium underline underline-offset-4">All tours</a>
+    </div>
+    <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        tours.map((tour, i) => (
+          <TourCard
+            tour={tour}
+            featured={i === 0}
+            class={i === 0 ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : i === 5 ? 'sm:col-span-2 lg:col-span-1' : ''}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="bg-cream">
+    <div class="section">
+      <div class="flex items-end justify-between gap-4">
+        <h2>Fleet and fares</h2>
+        <a href="/fleet-and-fares" class="shrink-0 text-sm font-medium underline underline-offset-4">Fare details</a>
+      </div>
+      <div class="mt-6">
+        <FleetTable />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Popular routes</h2>
+    <ul class="mt-6 grid gap-x-10 lg:grid-cols-2">
+      {routes.map((route) => <RouteCard route={route} />)}
+    </ul>
+  </section>
+
+  {
+    reviews.length > 0 && (
+      <section class="bg-cream">
+        <div class="section">
+          <h2>What guests say</h2>
+          <div class="mt-6 grid gap-6 md:grid-cols-3">
+            {reviews.map((review) => (
+              <ReviewCard review={review} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <CtaBand />
+</BaseLayout>

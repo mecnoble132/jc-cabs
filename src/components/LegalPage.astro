@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={`${title} | JC Cabs`} description={description}>
+  <article class="mx-auto max-w-2xl px-5 py-12 lg:px-8 lg:py-[4.5rem]">
+    <p class="mb-6 rounded-lg border border-line bg-cream px-4 py-3 text-sm text-muted">
+      Draft: this wording is a starting point. JC Cabs must confirm every item marked TBD, and have the final text
+      reviewed, before launch.
+    </p>
+    <h1>{title}</h1>
+    <div
+      class="mt-6 [&_h2]:mt-8 [&_h2]:mb-2 [&_h2]:text-lg [&_h2]:font-semibold [&_li]:mt-1 [&_p]:mt-3 [&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-5"
+    >
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

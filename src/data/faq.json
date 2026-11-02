@@ -1,0 +1,30 @@
+[
+  {
+    "q": "How do I book a taxi?",
+    "a": "Fill in the booking form, call us, or message us on WhatsApp. We confirm your booking by phone or WhatsApp, usually within TBD minutes."
+  },
+  {
+    "q": "How do I pay?",
+    "a": "TBD: payment methods accepted (cash, UPI, card) and when payment is due."
+  },
+  {
+    "q": "Can I cancel or change a booking?",
+    "a": "Yes. TBD: cancellation window and any charges. See our cancellation and refund policy for details."
+  },
+  {
+    "q": "How much luggage can I bring?",
+    "a": "It depends on the vehicle. Each car on the Fleet & Fares page lists its luggage space. If you have more bags than usual, tell us when you book so we can send a bigger vehicle."
+  },
+  {
+    "q": "Do you provide child seats?",
+    "a": "TBD: availability and charge. Please ask when you book."
+  },
+  {
+    "q": "Can I travel with a pet?",
+    "a": "TBD: pet policy. Please tell us when you book."
+  },
+  {
+    "q": "Do you run at night?",
+    "a": "Yes, we operate 24 hours. Night charges may apply. See the fare notes on the Fleet & Fares page."
+  }
+]

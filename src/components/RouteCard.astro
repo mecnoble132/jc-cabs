@@ -1,0 +1,22 @@
+---
+import Icon from './Icon.astro';
+import { rupees } from '../lib/format';
+
+interface Props {
+  route: { id: string; from: string; to: string; fare: number | null };
+}
+
+const { route } = Astro.props;
+---
+
+<li class="flex items-center justify-between gap-4 border-b border-line py-3">
+  <p class="flex flex-wrap items-center gap-x-2 font-medium">
+    <span>{route.from}</span>
+    <Icon name="arrow" class="h-4 w-4 text-muted" />
+    <span>{route.to}</span>
+  </p>
+  <p class="shrink-0 text-right text-sm">
+    <span class="text-muted">From </span>
+    <span class="font-semibold">{rupees(route.fare)}</span>
+  </p>
+</li>

@@ -1,0 +1,49 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  href: string;
+  /**
+   * book = brass fill (the only accent use), call = outline on light, call-dark = outline on dark/photo,
+   * whatsapp = green fill. `secondary` is an alias of `call`.
+   */
+  variant?: 'book' | 'call' | 'call-dark' | 'whatsapp' | 'secondary';
+  /** Adds a trailing ↗ arrow. */
+  arrow?: boolean;
+  /** GA4 event name, wired up in Phase 6 */
+  track?: string;
+  city?: string;
+  class?: string;
+}
+
+const { href, variant = 'book', arrow = false, track, city, class: cls = '' } = Astro.props;
+
+const variants = {
+  book: 'bg-brass-light text-forest hover:bg-brass',
+  call: 'border border-line bg-white text-ink hover:border-forest',
+  secondary: 'border border-line bg-white text-ink hover:border-forest',
+  'call-dark': 'border border-white/50 text-white hover:bg-white hover:text-forest',
+  whatsapp: 'bg-whatsapp text-white hover:brightness-110',
+};
+---
+
+<a
+  href={href}
+  data-track={track}
+  data-city={city}
+  class:list={[
+    'group inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 text-sm font-semibold whitespace-nowrap transition-colors',
+    variants[variant],
+    cls,
+  ]}
+>
+  <slot />
+  {
+    arrow && (
+      <Icon
+        name="arrow-up-right"
+        class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+      />
+    )
+  }
+</a>

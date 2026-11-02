@@ -1,0 +1,92 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+/* Design tokens (see DESIGN.md section 12).
+   Canvas is white. Forest green is the brand ink. Brass is reserved for the Book button. */
+@theme {
+  --color-ink: #111815;
+  --color-forest: #0f2e26;
+  --color-forest-soft: #1a4338;
+  --color-brass: #c99a3f;
+  --color-brass-light: #e3b95f;
+  --color-brass-dark: #7a5a20;
+  --color-cream: #f3f4f1;
+  --color-paper: #ffffff;
+  --color-line: #dfe3de;
+  --color-muted: #5b665f;
+  --color-whatsapp: #1f7a56;
+  --color-danger: #b3261e;
+  --color-success: #1b6e3a;
+
+  --font-sans: "Inter Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --radius-card: 12px;
+  --radius-control: 8px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper font-sans text-[0.9375rem] leading-relaxed text-ink antialiased;
+    font-variant-numeric: tabular-nums;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-semibold tracking-tight text-balance;
+  }
+
+  h1 {
+    @apply text-[1.875rem] leading-[1.12] lg:text-[2.75rem];
+  }
+
+  h2 {
+    @apply text-[1.375rem] leading-tight lg:text-[1.875rem];
+  }
+
+  h3 {
+    @apply text-base leading-snug lg:text-lg;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 2px;
+  }
+
+  /* Dark or photo sections use a light focus ring so it stays visible */
+  [data-theme="dark"] :focus-visible {
+    outline-color: #ffffff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .section {
+    @apply mx-auto max-w-[1200px] px-5 py-12 lg:px-8 lg:py-[4.5rem];
+  }
+
+  /* Small label, used sparingly */
+  .eyebrow {
+    @apply mb-3 block text-[0.6875rem] font-semibold tracking-[0.16em] text-muted uppercase;
+  }
+
+  [data-theme="dark"] .eyebrow {
+    @apply text-white/75;
+  }
+}
