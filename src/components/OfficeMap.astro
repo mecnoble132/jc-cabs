@@ -1,0 +1,25 @@
+---
+import site from '../data/site.json';
+
+interface Props {
+  class?: string;
+}
+
+const { class: cls = '' } = Astro.props;
+const { lat, lng, mapsUrl } = site.office;
+const embed = `https://maps.google.com/maps?q=${lat},${lng}&z=16&output=embed`;
+---
+
+<!-- The office pin from the owner's Google Maps listing. -->
+<div class={cls}>
+  <iframe
+    src={embed}
+    title="JC Cabs office on Google Maps"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    class="aspect-[16/10] w-full rounded-xl border border-line"
+  ></iframe>
+  <a href={mapsUrl} target="_blank" rel="noopener" class="mt-2 inline-block text-sm font-medium underline underline-offset-4">
+    Open in Google Maps
+  </a>
+</div>

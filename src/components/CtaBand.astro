@@ -9,7 +9,7 @@ import { images } from '../lib/images';
 interface Props {
   heading?: string;
   text?: string;
-  /** City pages pass their city so Call dials the local office. */
+  /** City pages pass their city for call tracking. */
   city?: CityKey;
 }
 
@@ -36,7 +36,7 @@ const {
     <p class="mt-3 max-w-md text-white/85">{text}</p>
     <div class="mt-6 flex flex-col gap-2 sm:flex-row">
       <Button href="/#book" variant="book" arrow>Book your taxi</Button>
-      <Button href={telLink(city)} variant="call-dark" track="click_call" city={city ?? site.defaultCity}>
+      <Button href={telLink()} variant="call-dark" track="click_call" city={city ?? site.defaultCity}>
         <Icon name="phone" class="h-4 w-4" />
         Call
       </Button>

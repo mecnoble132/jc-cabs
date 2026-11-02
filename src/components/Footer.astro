@@ -5,6 +5,7 @@ import { telLink, waLink, type CityKey } from '../lib/contact';
 import { images } from '../lib/images';
 
 const cities = Object.entries(site.cities) as [CityKey, (typeof site.cities)[CityKey]][];
+const office = site.office;
 const year = new Date().getFullYear();
 ---
 
@@ -15,27 +16,29 @@ const year = new Date().getFullYear();
       <p class="mt-3 max-w-xs text-white/70">{site.tagline}</p>
     </div>
 
-    {
-      cities.map(([key, city]) => (
-        <div>
-          <h2 class="mb-2 text-sm font-semibold">{city.label}</h2>
-          <p class="text-white/70">{city.address}</p>
-          <p class="mt-1 text-white/70">{city.hours}</p>
-          <a
-            href={telLink(key)}
-            data-track="click_call"
-            data-city={key}
-            class="mt-2 inline-block font-medium underline underline-offset-4"
-          >
-            Call: {city.phoneDisplay}
-          </a>
-          <br />
-          <a href={`/taxi-in-${key}`} class="mt-1 inline-block text-white/70 underline underline-offset-4">
+    <div>
+      <h2 class="mb-2 text-sm font-semibold">Office</h2>
+      <p class="text-white/70">{office.address}</p>
+      <p class="mt-1 text-white/70">{office.hours}</p>
+      <a href={telLink()} data-track="click_call" class="mt-2 inline-block font-medium underline underline-offset-4">
+        Call: {site.phoneDisplay}
+      </a>
+      <br />
+      <a href={office.mapsUrl} target="_blank" rel="noopener" class="mt-1 inline-block text-white/70 underline underline-offset-4">
+        Open in Google Maps
+      </a>
+    </div>
+
+    <div>
+      <h2 class="mb-2 text-sm font-semibold">We serve</h2>
+      {
+        cities.map(([key, city]) => (
+          <a href={`/taxi-in-${key}`} class="block py-0.5 text-white/70 underline underline-offset-4">
             Taxi in {city.label}
           </a>
-        </div>
-      ))
-    }
+        ))
+      }
+    </div>
 
     <div>
       <h2 class="mb-2 text-sm font-semibold">Contact</h2>

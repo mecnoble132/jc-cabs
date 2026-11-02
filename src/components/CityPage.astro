@@ -5,6 +5,7 @@ import Button from './Button.astro';
 import Icon from './Icon.astro';
 import RouteCard from './RouteCard.astro';
 import CtaBand from './CtaBand.astro';
+import OfficeMap from './OfficeMap.astro';
 import site from '../data/site.json';
 import cities from '../data/cities.json';
 import routes from '../data/routes.json';
@@ -16,7 +17,9 @@ interface Props {
 
 const { cityKey } = Astro.props;
 const city = cities[cityKey];
-const office = site.cities[cityKey];
+const office = site.office;
+const label = site.cities[cityKey].label;
+const isOfficeCity = cityKey === office.city;
 const cityRoutes = routes.filter((r) => r.city === cityKey);
 ---
 
@@ -29,11 +32,11 @@ const cityRoutes = routes.filter((r) => r.city === cityKey);
   <PhotoHero image={city.image} alt={city.imageAlt} title={`Taxi in ${city.heading}`} intro={city.intro}>
     <div class="mt-5 flex flex-col gap-2 sm:flex-row">
       <Button href="/#book" variant="book" arrow>Book now</Button>
-      <Button href={telLink(cityKey)} variant="call-dark" track="click_call" city={cityKey}>
+      <Button href={telLink()} variant="call-dark" track="click_call" city={cityKey}>
         <Icon name="phone" class="h-4 w-4" />
-        Call {office.label}
+        Call
       </Button>
-      <Button href={waLink(`Hi, I'd like a taxi in ${office.label}.`)} variant="whatsapp" track="click_whatsapp">
+      <Button href={waLink(`Hi, I'd like a taxi in ${label}.`)} variant="whatsapp" track="click_whatsapp">
         <Icon name="chat" class="h-4 w-4" />
         WhatsApp
       </Button>
@@ -61,7 +64,7 @@ const cityRoutes = routes.filter((r) => r.city === cityKey);
     </div>
 
     <div>
-      <h2>Popular routes from {office.label}</h2>
+      <h2>Popular routes from {label}</h2>
       <ul class="mt-3">
         {cityRoutes.map((route) => <RouteCard route={route} />)}
       </ul>
@@ -75,7 +78,14 @@ const cityRoutes = routes.filter((r) => r.city === cityKey);
   <section class="bg-cream">
     <div class="section grid gap-8 lg:grid-cols-2 lg:gap-16">
       <div>
-        <h2>Our {office.label} office</h2>
+        <h2>Our office</h2>
+        {
+          !isOfficeCity && (
+            <p class="mt-3 text-muted">
+              Our office is in {office.label}. We serve {label} too: call or WhatsApp to book.
+            </p>
+          )
+        }
         <dl class="mt-5">
           <div class="flex justify-between gap-4 border-b border-line py-3">
             <dt class="font-medium">Address</dt>
@@ -88,17 +98,14 @@ const cityRoutes = routes.filter((r) => r.city === cityKey);
           <div class="flex justify-between gap-4 border-b border-line py-3">
             <dt class="font-medium">Phone</dt>
             <dd class="text-right">
-              <a href={telLink(cityKey)} data-track="click_call" data-city={cityKey} class="underline underline-offset-4">
-                {office.phoneDisplay}
+              <a href={telLink()} data-track="click_call" data-city={cityKey} class="underline underline-offset-4">
+                {site.phoneDisplay}
               </a>
             </dd>
           </div>
         </dl>
       </div>
-      <!-- Google Maps embed goes here once the office address is confirmed -->
-      <div class="grid aspect-[16/10] place-items-center rounded-xl border border-line bg-white p-4 text-center text-sm text-muted">
-        Map appears once the office address is confirmed.
-      </div>
+      <OfficeMap />
     </div>
   </section>
 

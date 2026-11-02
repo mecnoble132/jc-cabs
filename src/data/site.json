@@ -6,33 +6,63 @@
   "whatsapp": "919876543210",
   "whatsappDisplay": "98765 43210",
   "defaultCity": "trivandrum",
+  "phone": "+919876543210",
+  "phoneDisplay": "98765 43210",
+  "office": {
+    "city": "trivandrum",
+    "label": "Trivandrum",
+    "address": "TBD, Trivandrum, Kerala",
+    "hours": "Open 24 hours",
+    "lat": 8.6066932,
+    "lng": 77.0355099,
+    "mapsUrl": "https://www.google.com/maps/place/Jc+Cabs+Tvm/@8.6066932,77.0355099,17z/data=!3m1!4b1!4m6!3m5!1s0x3b05b75011b57e4d:0xd0496d133d961d94!8m2!3d8.6066932!4d77.0355099"
+  },
   "cities": {
     "trivandrum": {
-      "label": "Trivandrum",
-      "phone": "+919876543210",
-      "phoneDisplay": "98765 43210",
-      "address": "TBD, Trivandrum, Kerala",
-      "hours": "Open 24 hours"
+      "label": "Trivandrum"
     },
     "kochi": {
-      "label": "Kochi",
-      "phone": "+919876543210",
-      "phoneDisplay": "98765 43210",
-      "address": "TBD, Kochi, Kerala",
-      "hours": "Open 24 hours"
+      "label": "Kochi"
     }
   },
   "nav": [
-    { "label": "Services", "href": "/services" },
-    { "label": "Fleet & Fares", "href": "/fleet-and-fares" },
-    { "label": "Tours", "href": "/tours" },
-    { "label": "About", "href": "/about" },
-    { "label": "Contact", "href": "/contact" }
+    {
+      "label": "Services",
+      "href": "/services"
+    },
+    {
+      "label": "Fleet & Fares",
+      "href": "/fleet-and-fares"
+    },
+    {
+      "label": "Tours",
+      "href": "/tours"
+    },
+    {
+      "label": "About",
+      "href": "/about"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact"
+    }
   ],
   "footerLinks": [
-    { "label": "FAQ", "href": "/faq" },
-    { "label": "Terms", "href": "/terms" },
-    { "label": "Cancellation & refund", "href": "/cancellation-refund-policy" },
-    { "label": "Privacy", "href": "/privacy-policy" }
+    {
+      "label": "FAQ",
+      "href": "/faq"
+    },
+    {
+      "label": "Terms",
+      "href": "/terms"
+    },
+    {
+      "label": "Cancellation & refund",
+      "href": "/cancellation-refund-policy"
+    },
+    {
+      "label": "Privacy",
+      "href": "/privacy-policy"
+    }
   ]
 }

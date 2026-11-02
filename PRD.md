@@ -25,6 +25,7 @@ This is a lead-generation site, not an online booking-and-payment platform. Book
 - **Tours:** every tour is customised and planned with the customer on WhatsApp. The listed tours are suggested destinations, with no fixed route, itinerary or inclusions.
 - **Package pricing:** to be shown on the site. The owner will share the price details for reference.
 - **Cities:** Trivandrum and Cochin (Kochi). Both are live today.
+- **Office:** one office, in Trivandrum (Google Maps: "Jc Cabs Tvm"), and one phone number for the whole site. Kochi is served from Trivandrum.
 - **Naming:** the owner says "Cochin". Searchers use both "Cochin" and "Kochi", so the site writes **Kochi (Cochin)** in headings and uses both words in page copy and SEO titles.
 
 ## 2. Goals and non-goals

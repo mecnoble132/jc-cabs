@@ -8,7 +8,7 @@ export function waLink(message?: string): string {
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }
 
-/** Builds a tel: link for a city, falling back to the default city. */
-export function telLink(city: CityKey = site.defaultCity as CityKey): string {
-  return `tel:${site.cities[city].phone}`;
+/** Builds a tel: link for the one JC Cabs number. */
+export function telLink(): string {
+  return `tel:${site.phone}`;
 }
