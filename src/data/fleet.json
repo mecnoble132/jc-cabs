@@ -9,7 +9,7 @@
     "ratePerKm": 11,
     "minCharge": 900,
     "bestFor": "Solo travellers and couples, city trips, short airport transfers",
-    "image": null
+    "image": "car-hatchback"
   },
   {
     "id": "sedan",
@@ -21,7 +21,7 @@
     "ratePerKm": 13,
     "minCharge": 1100,
     "bestFor": "Families of up to 4, airport pickups, comfortable outstation trips",
-    "image": null
+    "image": "car-sedan"
   },
   {
     "id": "7-seater",

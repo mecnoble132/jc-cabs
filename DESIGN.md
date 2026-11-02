@@ -93,7 +93,7 @@ One family: **Inter** (variable, self-hosted via `@fontsource-variable/inter`), 
 Photos are free Unsplash images in `src/assets/images/`, optimised by Astro's `<Image>`: `hero`, `munnar`, `alleppey`, `thekkady`, `varkala`, `kanyakumari`, `kerala`, plus `trivandrum` (unused yet, reserved for the Trivandrum city page).
 
 - Thekkady uses a generic Western Ghats hillside and Kerala 5/7-day uses a second backwaters shot, so both are placeholders for better-matched photos.
-- **Fleet photos do not exist.** Show the owner's real vehicles when supplied; do not use generated or stock cars, which would misrepresent the fleet.
+- **Fleet photos are the owner's own.** `car-hatchback` and `car-sedan` appear beside their rows in the fleet table; `car-white-sedan`, `car-black-sedan`, `cars-lineup` and `cars-pair` form the "Our cars" gallery on the Fleet page. The 7-seater and Traveller rows show "Photo coming soon" until the owner supplies photos. Do not use generated or stock cars, which would misrepresent the fleet. The supplied photos are small (about 290 to 680 px wide), fine for thumbnails and a small gallery but too low-resolution for a full-width hero.
 - Credit photographers if the owner wants attribution (Unsplash does not require it).
 - Replace any photo by adding a JPEG to `src/assets/images/` and setting its name in `tours.json`.
 
