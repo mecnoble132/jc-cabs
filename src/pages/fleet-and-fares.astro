@@ -13,23 +13,24 @@ const gallery = [
   { key: 'cars-pair', alt: 'Two of our taxis parked side by side' },
 ];
 
-// Example values until the owner confirms them (see the ratesAreExamples flag in site.json).
+// Driver bata is confirmed by the owner. Night and waiting charges are not supplied yet.
 const fareNotes = [
-  { label: 'Driver bata', value: '₹300 per day on outstation trips' },
+  { label: 'Driver bata', value: '₹500 per day on outstation trips' },
   { label: 'Toll and parking', value: 'Paid as per actuals' },
-  { label: 'Night charges', value: '₹200, between 10 pm and 6 am' },
-  { label: 'Waiting charges', value: '₹100 per hour after the first 30 minutes' },
+  { label: 'Night charges', value: 'TBD' },
+  { label: 'Waiting charges', value: 'TBD' },
 ];
 ---
 
 <BaseLayout
   title="Taxi Fleet & Fares in Trivandrum and Kochi (Cochin) | JC Cabs"
-  description="Hatchback, sedan, 7-seater and Traveller taxis in Trivandrum and Kochi (Cochin). See seats, luggage space and per-km fares."
+  description="Hatchback, sedan, Ertiga, Innova and Traveller taxis in Trivandrum and Kochi (Cochin). See the rate card for local packages, extra km and hourly short trips."
 >
   <section class="section">
     <h1>Fleet and fares</h1>
     <p class="mt-3 max-w-xl text-muted">
-      Four vehicle types for solo trips, families and groups. All are air-conditioned.
+      Hatchbacks, sedans, Ertigas, Innovas and Travellers for solo trips, families and groups. All are
+      air-conditioned.
     </p>
     <div class="mt-8">
       <FleetTable />
@@ -58,7 +59,7 @@ const fareNotes = [
     <div class="section">
       <h2>Fare notes</h2>
       <p class="mt-2 max-w-xl text-muted">
-        The per-km rate is the base fare. These extras may apply, depending on the trip.
+        These extras may apply, depending on the trip.
       </p>
       <dl class="mt-6 grid gap-x-10 sm:grid-cols-2">
         {

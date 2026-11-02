@@ -3,9 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PhotoHero from '../../components/PhotoHero.astro';
 import Button from '../../components/Button.astro';
 import Icon from '../../components/Icon.astro';
-import ExampleNote from '../../components/ExampleNote.astro';
 import tours from '../../data/tours.json';
-import { rupees } from '../../lib/format';
 import { telLink, waLink } from '../../lib/contact';
 
 export function getStaticPaths() {
@@ -19,7 +17,7 @@ const message = `Hi, I'd like to enquire about the ${tour.name} tour package.`;
 
 <BaseLayout
   title={`${tour.name} Tour Package from Trivandrum and Kochi (Cochin) | JC Cabs`}
-  description={`${tour.summary} Private taxi tour with a driver from Trivandrum or Kochi (Cochin).`}
+  description={`${tour.summary} Private taxi tour with a driver from Trivandrum or Kochi (Cochin), customised for you.`}
   overlay
 >
   <PhotoHero image={tour.image ?? 'kerala'} alt={`${tour.name}, Kerala`} title={`${tour.name} tour`} intro={tour.summary}>
@@ -46,18 +44,13 @@ const message = `Hi, I'd like to enquire about the ${tour.name} tour package.`;
     </div>
     <dl class="self-start">
       <div class="flex justify-between gap-4 border-y border-line py-3">
-        <dt class="font-medium">Duration</dt>
-        <dd class="text-right text-muted">{tour.duration}</dd>
-      </div>
-      <div class="flex justify-between gap-4 border-b border-line py-3">
-        <dt class="font-medium">Starting from</dt>
-        <dd class="text-right font-semibold">{rupees(tour.startingPrice)}</dd>
+        <dt class="font-medium">Price</dt>
+        <dd class="text-right text-muted">Customised for you</dd>
       </div>
       <div class="flex justify-between gap-4 border-b border-line py-3">
         <dt class="font-medium">Vehicles</dt>
-        <dd class="text-right text-muted">Hatchback, sedan, 7-seater, Traveller</dd>
+        <dd class="text-right text-muted">Hatchback, sedan, Ertiga, Innova, Traveller</dd>
       </div>
-      <ExampleNote />
     </dl>
   </section>
 

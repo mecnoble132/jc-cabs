@@ -3,7 +3,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import TourCard from '../../components/TourCard.astro';
 import Button from '../../components/Button.astro';
 import Icon from '../../components/Icon.astro';
-import ExampleNote from '../../components/ExampleNote.astro';
 import tours from '../../data/tours.json';
 import { waLink } from '../../lib/contact';
 
@@ -13,12 +12,12 @@ const customMessage =
 
 <BaseLayout
   title="Kerala Tour Packages from Trivandrum and Kochi (Cochin) | JC Cabs"
-  description="Munnar, Alleppey, Thekkady, Varkala, Kanyakumari and Kerala 5 and 7 day tour packages by taxi, or ask for a custom tour."
+  description="Munnar, Alleppey, Thekkady, Varkala, Kanyakumari and Kerala 5 and 7 day tour packages by taxi, customised for you."
 >
   <section class="section">
     <h1>Tour packages</h1>
     <p class="mt-3 max-w-xl text-muted">
-      Choose a ready-made package, or tell us what you want and we will plan it.
+      Every tour is customised for you. Pick a destination, or tell us what you want and we will plan it.
     </p>
 
     <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -32,7 +31,6 @@ const customMessage =
         ))
       }
     </div>
-    <ExampleNote />
   </section>
 
   <section class="bg-cream">

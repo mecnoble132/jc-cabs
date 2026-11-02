@@ -15,9 +15,9 @@
     "title": "Local hourly rental",
     "summary": "A car and driver for the day within the city, for shopping, meetings or sightseeing.",
     "points": [
-      "4 hours / 40 km package: from ₹1,500",
-      "8 hours / 80 km package: from ₹2,600",
-      "Extra hour ₹150, extra km ₹12"
+      "8 hours / 80 km package: from ₹2,200 (hatchback) to ₹4,000 (Innova Hycross)",
+      "Extra km from ₹17 and extra hour from ₹120",
+      "Short trips: from ₹250 per hour, 4 hour minimum"
     ],
     "message": "Hi, I'd like a local hourly rental."
   },
@@ -27,7 +27,7 @@
     "summary": "One-way and round trips to other cities and hill stations across Kerala and Tamil Nadu.",
     "points": [
       "One-way and round trip",
-      "Fare is per km, plus driver bata, toll and parking",
+      "Driver bata ₹500 per day, plus toll and parking",
       "Popular routes are listed on the home page"
     ],
     "message": "Hi, I'd like an outstation taxi."

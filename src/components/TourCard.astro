@@ -1,17 +1,14 @@
 ---
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
-import { rupees } from '../lib/format';
 import { images } from '../lib/images';
 
 interface Props {
   tour: {
     slug: string;
     name: string;
-    duration: string;
     summary: string;
-    startingPrice: number | null;
-    /** File name (without .jpg) in src/assets/images */
+    /** File name (without extension) in src/assets/images */
     image: string | null;
   };
   /** The large tile on the grid. */
@@ -23,7 +20,7 @@ const { tour, featured = false, class: cls = '' } = Astro.props;
 const photo = tour.image ? images[tour.image] : undefined;
 ---
 
-<!-- Image-led tile: the photo is the content, the text sits on it. The whole tile opens the tour's page. -->
+<!-- Image-led tile: just the photo and the name. Packages are priced per request, so no price is shown. -->
 <a
   href={`/tours/${tour.slug}`}
   data-theme="dark"
@@ -52,11 +49,8 @@ const photo = tour.image ? images[tour.image] : undefined;
   </span>
 
   <div class="absolute inset-x-0 bottom-0 p-4 text-white">
-    <p class="text-xs text-white/80">{tour.duration}</p>
     <h3 class:list={[featured && 'lg:text-2xl']}>{tour.name}</h3>
-    <p class="mt-1 text-sm text-white/85">
-      From <span class="font-semibold text-white">{rupees(tour.startingPrice)}</span>
-    </p>
+    <p class="mt-0.5 text-sm text-white/85">Customised for you</p>
   </div>
-  <span class="sr-only">View the {tour.name} tour</span>
+  <span class="sr-only">View {tour.name}</span>
 </a>

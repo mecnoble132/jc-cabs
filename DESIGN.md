@@ -81,8 +81,8 @@ One family: **Inter** (variable, self-hosted via `@fontsource-variable/inter`), 
 - **Navbar:** floating white/blurred bar, `JC` monogram + name, five links, outline Call and brass Book now on desktop; on mobile a menu button opens a white numbered list with Call and WhatsApp. Works without JavaScript.
 - **Hero:** full-bleed photo (`hero.jpg`, Munnar tea road) with a gradient, left-aligned h1 and one sentence, then the booking form, then four small trust facts. Height 34 rem mobile, 44 rem desktop.
 - **Booking form:** trip-type tabs, pickup, drop, date (past dates blocked), time, vehicle (pre-selected from `?vehicle=`), brass "Get a quote". Opens WhatsApp with the trip details. Emailing the owner arrives in Phase 4.
-- **Tour tiles:** photo tile with a bottom gradient, duration, name and "From TBD", arrow badge; the whole tile opens a WhatsApp enquiry. One large tile and five small on a 3-column grid.
-- **Fleet table:** vehicle, capacity, per km, minimum, outline Book button; stacks on mobile.
+- **Tour tiles:** photo tile with a bottom gradient, the tour name and the line "Customised for you", arrow badge; no price or duration is shown, since every package is quoted per request. The whole tile opens the tour's page, which has the WhatsApp enquiry. One large tile and five small on a 3-column grid.
+- **Fleet table:** follows the owner's rate card. Columns: vehicle (photo, name, short description), capacity, 8 hr / 80 km package, extra km and extra hour, short-trip hourly rate, outline Book button. Rows for Hatchback, Sedan, Ertiga, Innova, Innova Crysta, Innova Hycross and Traveller ("On request"). Stacks on mobile with labelled lines. Data lives in `src/data/fleet.json`.
 - **Routes, FAQ, reviews:** ruled lists; reviews appear only when `reviews.json` has real entries.
 - **CTA band:** photo (`kanyakumari.jpg`), left-aligned headline, Book / Call / WhatsApp.
 - **Footer:** the one dark block (forest), small type, both cities, legal links.
