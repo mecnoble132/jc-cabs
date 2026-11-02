@@ -1,12 +1,14 @@
 ---
+import Button from './Button.astro';
 import Icon from './Icon.astro';
-import { rupees } from '../lib/format';
 
 interface Props {
-  route: { id: string; from: string; to: string; fare: number | null };
+  route: { id: string; from: string; to: string };
 }
 
 const { route } = Astro.props;
+// The home page booking form reads pickup and drop from the link and fills those fields in.
+const bookHref = `/?pickup=${encodeURIComponent(route.from)}&drop=${encodeURIComponent(route.to)}#book`;
 ---
 
 <li class="flex items-center justify-between gap-4 border-b border-line py-3">
@@ -15,8 +17,5 @@ const { route } = Astro.props;
     <Icon name="arrow" class="h-4 w-4 text-muted" />
     <span>{route.to}</span>
   </p>
-  <p class="shrink-0 text-right text-sm">
-    <span class="text-muted">From </span>
-    <span class="font-semibold">{rupees(route.fare)}</span>
-  </p>
+  <Button href={bookHref} variant="call" class="shrink-0">Book</Button>
 </li>

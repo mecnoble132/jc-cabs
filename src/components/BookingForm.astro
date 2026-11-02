@@ -64,10 +64,16 @@ const label = 'block text-xs font-medium text-muted';
 <script>
   const form = document.getElementById('quick-book') as HTMLFormElement | null;
   if (form) {
-    // Pre-select a vehicle when arriving from a "Book this car" link, e.g. /?vehicle=sedan
-    const wanted = new URLSearchParams(location.search).get('vehicle');
+    // Pre-fill from a link: a "Book this car" link sets the vehicle (/?vehicle=sedan) and a route link
+    // sets the trip (/?pickup=Kochi&drop=Munnar).
+    const params = new URLSearchParams(location.search);
     const select = form.elements.namedItem('vehicle') as HTMLSelectElement;
+    const wanted = params.get('vehicle');
     if (wanted) select.value = wanted;
+    const pickup = params.get('pickup');
+    const drop = params.get('drop');
+    if (pickup) (form.elements.namedItem('pickup') as HTMLInputElement).value = pickup;
+    if (drop) (form.elements.namedItem('drop') as HTMLInputElement).value = drop;
 
     // Don't allow past dates
     const dateInput = form.elements.namedItem('date') as HTMLInputElement;
