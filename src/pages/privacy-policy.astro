@@ -1,26 +1,87 @@
 ---
 import LegalPage from '../components/LegalPage.astro';
+import site from '../data/site.json';
 ---
 
-<LegalPage title="Privacy policy" description="What personal information JC Cabs collects and how it is used.">
-  <h2>What we collect</h2>
+<LegalPage
+  title="Privacy policy"
+  description="What personal information JC Cabs collects through this website and how it is used."
+  draft={false}
+>
+  <p>Last updated: 3 November 2026</p>
   <p>
-    The details you type into our booking and enquiry forms (name, phone, pickup and drop, date and time, and your
-    message). The forms open WhatsApp, so the details reach us as a WhatsApp message from you.
+    This policy explains what happens to your information when you use the JC Cabs website and book a taxi with us.
+    In short: the website itself does not store your details. They only reach us when you choose to send them by
+    WhatsApp, phone call or email.
   </p>
 
-  <h2>How we use it</h2>
+  <h2>The booking and enquiry forms</h2>
+  <p>
+    The booking form asks for your trip type, pickup and drop points, date, time and preferred vehicle. The enquiry
+    form on the Contact page asks for your name, phone number, city and a message.
+  </p>
+  <p>
+    When you press the button, your browser turns these details into a WhatsApp message and opens WhatsApp. Nothing
+    is sent to the website or saved by it. The details reach us only if you press send in WhatsApp. If you close
+    WhatsApp without sending, we never see them.
+  </p>
+
+  <h2>What we receive when you contact us</h2>
   <ul>
-    <li>To confirm your fare and driver, and to arrange your trip.</li>
-    <li>To reply to your enquiry.</li>
+    <li>Your WhatsApp number and name as shown in WhatsApp, plus the message you send.</li>
+    <li>Your phone number if you call us.</li>
+    <li>Your email address and message if you email us.</li>
+  </ul>
+  <p>
+    Messages sent on WhatsApp are also handled by WhatsApp (Meta) under its own privacy policy.
+  </p>
+
+  <h2>How we use your details</h2>
+  <ul>
+    <li>To discuss and agree your fare, and to confirm your booking.</li>
+    <li>To arrange your vehicle and driver, and to contact you about your trip.</li>
+    <li>To reply to your questions.</li>
+  </ul>
+  <p>We do not use your details for advertising, and we do not sell them.</p>
+
+  <h2>Who we share them with</h2>
+  <ul>
+    <li>
+      <strong>Your driver</strong> gets your name, phone number, pickup and drop details so they can reach you on
+      the day.
+    </li>
+    <li>
+      <strong>Partner taxi agencies:</strong> if we arrange your vehicle through a partner agency, we share the same
+      trip details with them.
+    </li>
+    <li><strong>Authorities</strong>, only if the law requires it.</li>
   </ul>
 
-  <h2>Analytics and cookies</h2>
-  <p>Website analytics and cookies, and how to opt out: TBD. This section must be completed before analytics are turned on.</p>
+  <h2>Cookies and analytics</h2>
+  <p>
+    The JC Cabs website does not use cookies, analytics or advertising trackers. If we add analytics in future, we
+    will update this page first.
+  </p>
+  <p>
+    The Contact page and the city pages show an embedded Google Map of our office. When that map loads, Google
+    receives your IP address and may set its own cookies, under Google's privacy policy.
+  </p>
 
-  <h2>Sharing and keeping your details</h2>
-  <p>Who we share trip details with (for example, your driver) and how long we keep them: TBD.</p>
+  <h2>Website hosting</h2>
+  <p>
+    The website is hosted by Vercel. Like any web host, Vercel's servers record basic technical information about
+    each visit, such as your IP address, browser type and the page requested, to deliver the site and keep it secure.
+  </p>
+
+  <h2>How long we keep your details</h2>
+  <p>
+    Your messages and trip details stay in our WhatsApp, phone and email for as long as we need them to arrange
+    your trips and keep our records. You can ask us to delete them at any time.
+  </p>
 
   <h2>Your choices</h2>
-  <p>To ask us to correct or delete your details, contact us using the details on the Contact page. Response time: TBD.</p>
+  <p>
+    To see, correct or delete the details we hold about you, contact us on WhatsApp at {site.whatsappDisplay} or
+    email <a href={`mailto:${site.email}`} class="underline underline-offset-4">{site.email}</a>.
+  </p>
 </LegalPage>
