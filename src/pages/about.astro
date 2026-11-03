@@ -3,36 +3,59 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PhotoHero from '../components/PhotoHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 
-// Owner to supply these; every value is a visible TBD until then.
 const facts = [
-  { label: 'In business since', value: 'TBD' },
-  { label: 'Fleet size', value: 'TBD' },
+  { label: 'In business since', value: '2024' },
+  { label: 'Vehicles', value: 'Our own cabs plus partner agencies, so we can arrange as many as you need' },
   { label: 'Vehicle classes', value: 'Hatchback, sedan, Ertiga, Innova, Innova Crysta, Innova Hycross' },
-  { label: 'Cities', value: 'Trivandrum and Kochi (Cochin)' },
-  { label: 'Licences and permits', value: 'TBD' },
+  { label: 'Cities', value: 'Trivandrum and Kochi' },
+  { label: 'Availability', value: 'Open 24/7' },
+];
+
+const reasons = [
+  'Affordable and transparent fares',
+  'Airport pickup and drop services',
+  'Professional and experienced drivers',
+  'Clean, comfortable, well-maintained vehicles',
+  'Local and outstation taxi services',
+  '24/7 booking availability',
+  'Customer satisfaction is our priority',
 ];
 ---
 
 <BaseLayout
-  title="About JC Cabs | Taxi Service in Trivandrum and Kochi (Cochin)"
-  description="JC Cabs is a taxi service in Trivandrum and Kochi (Cochin) for airport transfers, local and outstation trips and tour packages."
+  title="About JC Cabs | Taxi Service in Trivandrum and Kochi"
+  description="JC Cabs is one of the best taxi services in Trivandrum and Kochi at very affordable rates: airport pickups and drops, local and outstation trips, 24/7."
   overlay
 >
   <PhotoHero
     image="munnar"
     alt="Tea plantations near Munnar, Kerala"
     title="About JC Cabs"
-    intro="A taxi service for Trivandrum and Kochi (Cochin), for locals and visitors."
+    intro="Your Journey, Our Responsibility!"
   />
 
   <section class="section grid gap-10 lg:grid-cols-2 lg:gap-16">
     <div>
       <h2>Who we are</h2>
       <p class="mt-3">
-        JC Cabs provides airport pickups and drops, outstation trips, local trips, package tours and
-        all other taxi services. We run hatchbacks, sedans, Ertigas and Innovas from our office in Trivandrum, serving Trivandrum and Kochi (Cochin), and we plan custom tours on request.
+        Welcome to JC Cabs, your trusted travel partner for safe, comfortable and affordable taxi services. We are
+        one of the best taxi services in Trivandrum and Kochi at very affordable rates, providing exceptional,
+        high-quality service.
       </p>
-      <p class="mt-3 text-muted">Our story, team and owner photo: TBD.</p>
+      <p class="mt-3">
+        Based in Kerala, JC Cabs specialises in airport pickups and drops, local travel, outstation trips and
+        customised travel solutions. We are committed to making every journey smooth, convenient and stress-free.
+      </p>
+      <p class="mt-3">
+        Founded in 2024 with a vision to provide quality transportation at budget-friendly fares, we focus on
+        customer satisfaction, punctuality, safety and comfort. Our professional drivers and well-maintained, clean
+        vehicles ensure a pleasant travel experience every time. Alongside our own cabs, we work with partner
+        agencies, so we can arrange as many vehicles as your group needs.
+      </p>
+      <p class="mt-3">
+        We believe everyone deserves comfortable travel at an affordable price. That's why we work hard to provide
+        dependable service without compromising on quality.
+      </p>
     </div>
     <dl>
       {
@@ -44,6 +67,33 @@ const facts = [
         ))
       }
     </dl>
+  </section>
+
+  <section class="section grid gap-10 lg:grid-cols-3 lg:gap-16">
+    <div>
+      <h2>Why choose JC Cabs?</h2>
+      <ul class="mt-3 list-disc space-y-1 pl-5">
+        {reasons.map((reason) => <li>{reason}</li>)}
+      </ul>
+    </div>
+    <div>
+      <h2>Our mission</h2>
+      <p class="mt-3">
+        To make every journey safe, comfortable, reliable and affordable while building lasting relationships with
+        our customers.
+      </p>
+    </div>
+    <div>
+      <h2>Our vision</h2>
+      <p class="mt-3">
+        To become a trusted travel partner for every traveller by delivering quality service and affordable
+        transportation.
+      </p>
+    </div>
+  </section>
+
+  <section class="section pt-0 text-center">
+    <p class="text-xl font-semibold">JC Cabs – Travel More, Worry Less!</p>
   </section>
 
   <CtaBand />
