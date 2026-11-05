@@ -16,9 +16,9 @@ const label = 'block text-xs font-medium text-muted';
     <div class="flex w-full rounded-lg bg-cream p-1 text-[0.8125rem] sm:inline-flex sm:w-auto sm:text-sm">
       {
         tripTypes.map((type, i) => (
-          <label class="flex-1 cursor-pointer sm:flex-none">
+          <label class="flex-auto cursor-pointer sm:flex-none">
             <input type="radio" name="trip" value={type} checked={i === 0} class="peer sr-only" />
-            <span class="block rounded-md px-2 py-1.5 text-center font-medium sm:px-3 text-muted peer-checked:bg-white peer-checked:text-ink peer-checked:shadow-sm peer-focus-visible:outline-2 peer-focus-visible:outline-forest">
+            <span class="block rounded-md px-1.5 py-1.5 text-center font-medium whitespace-nowrap sm:px-3 text-muted peer-checked:bg-white peer-checked:text-ink peer-checked:shadow-sm peer-focus-visible:outline-2 peer-focus-visible:outline-forest">
               {type}
             </span>
           </label>
