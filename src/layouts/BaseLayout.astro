@@ -13,10 +13,61 @@ interface Props {
   city?: CityKey;
   /** Let a full-bleed hero sit under the floating navbar (home page). Other pages get top padding. */
   overlay?: boolean;
+  /** Keep this page out of search results (the 404 page). */
+  noindex?: boolean;
 }
 
-const { title, description = site.description, city, overlay = false } = Astro.props;
+const { title, description = site.description, city, overlay = false, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+
+// Business details for Google (structured data). Everything comes from site.json, so it stays in step with
+// the phone, address and hours shown on the page. Test with https://search.google.com/test/rich-results
+const home = new URL('/', Astro.site).href;
+const business = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${home}#business`,
+  additionalType: 'https://schema.org/TaxiService',
+  name: site.name,
+  description: site.description,
+  slogan: site.tagline,
+  url: home,
+  logo: new URL('/favicon.png', Astro.site).href,
+  image: new URL('/og-image.jpg', Astro.site).href,
+  telephone: site.phone,
+  email: site.email,
+  priceRange: '₹₹',
+  currenciesAccepted: 'INR',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Nallikuzhi',
+    addressLocality: site.office.label,
+    addressRegion: 'Kerala',
+    postalCode: '695541',
+    addressCountry: 'IN',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: site.office.lat, longitude: site.office.lng },
+  hasMap: site.office.mapsUrl,
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    opens: '00:00',
+    closes: '23:59',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Thiruvananthapuram (Trivandrum)' },
+    { '@type': 'City', name: 'Kochi (Cochin)' },
+    { '@type': 'State', name: 'Kerala' },
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: site.phone,
+    contactType: 'reservations',
+    availableLanguage: ['English', 'Malayalam'],
+    areaServed: 'IN',
+  },
+};
+const website = { '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: home, publisher: { '@id': `${home}#business` } };
 ---
 
 <!doctype html>
@@ -40,6 +91,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="JC Cabs logo: taxi in Trivandrum and Kochi" />
     <meta name="twitter:card" content="summary_large_image" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <script type="application/ld+json" set:html={JSON.stringify(business)} />
+    <script type="application/ld+json" set:html={JSON.stringify(website)} />
   </head>
   <body>
     <a

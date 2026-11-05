@@ -1,0 +1,97 @@
+---
+import fleet from '../data/fleet.json';
+import site from '../data/site.json';
+
+const field =
+  'mt-1 h-11 w-full rounded-lg border border-line bg-white px-3 text-base text-ink placeholder:text-muted/70 focus:border-forest';
+const label = 'block text-xs font-medium text-muted';
+---
+
+<!-- Collects the tour details, then opens WhatsApp with a filled-in message (no blanks for the customer to fill). -->
+<form
+  id="custom-tour"
+  data-wa={site.whatsapp}
+  class="grid grid-cols-2 gap-3 rounded-xl border border-line bg-white p-4 text-ink lg:grid-cols-4"
+  aria-label="Custom tour request"
+>
+  <div class="col-span-2">
+    <label for="ct-places" class={label}>Places you want to visit</label>
+    <input id="ct-places" name="places" type="text" required placeholder="e.g. Munnar, Thekkady, Alleppey" class={field} autocomplete="off" />
+  </div>
+  <div class="col-span-2">
+    <label for="ct-from" class={label}>Starting from</label>
+    <input id="ct-from" name="from" type="text" placeholder="e.g. Kochi airport, Trivandrum hotel" class={field} autocomplete="off" />
+  </div>
+  <div>
+    <label for="ct-date" class={label}>Start date</label>
+    <input id="ct-date" name="date" type="date" class={field} />
+  </div>
+  <div>
+    <label for="ct-days" class={label}>Number of days</label>
+    <input id="ct-days" name="days" type="number" inputmode="numeric" min="1" max="30" required placeholder="e.g. 3" class={field} />
+  </div>
+  <div>
+    <label for="ct-adults" class={label}>Adults</label>
+    <input id="ct-adults" name="adults" type="number" inputmode="numeric" min="1" max="50" value="2" required class={field} />
+  </div>
+  <div>
+    <label for="ct-children" class={label}>Children</label>
+    <input id="ct-children" name="children" type="number" inputmode="numeric" min="0" max="50" value="0" class={field} />
+  </div>
+  <div class="col-span-2">
+    <label for="ct-vehicle" class={label}>Vehicle</label>
+    <select id="ct-vehicle" name="vehicle" class={field}>
+      <option value="">Any, suggest one for us</option>
+      {fleet.map((car) => <option value={car.name}>{car.name} ({car.seats} seats)</option>)}
+    </select>
+  </div>
+  <div class="col-span-2 lg:self-end">
+    <button
+      type="submit"
+      class="inline-flex h-11 w-full items-center justify-center rounded-lg bg-whatsapp px-5 text-sm font-semibold text-white transition hover:brightness-110"
+    >
+      Send on WhatsApp
+    </button>
+  </div>
+  <p class="col-span-2 text-xs text-muted lg:col-span-4">Opens WhatsApp with your tour details. We reply with a plan and a quote.</p>
+</form>
+
+<script>
+  const form = document.getElementById('custom-tour') as HTMLFormElement | null;
+  if (form) {
+    const date = form.elements.namedItem('date') as HTMLInputElement;
+    date.min = new Date().toISOString().slice(0, 10);
+
+    // A tour page's "Ask for a custom tour" link passes its destination (/tours?destination=Munnar#custom).
+    const wanted = new URLSearchParams(location.search).get('destination');
+    if (wanted) (form.elements.namedItem('places') as HTMLInputElement).value = wanted;
+
+    const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : word === 'child' ? 'ren' : 's'}`;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const d = new FormData(form);
+      const text = (name: string) => String(d.get(name) ?? '').trim();
+      const days = Number(text('days'));
+      const adults = Number(text('adults'));
+      const children = Number(text('children') || 0);
+      const start = text('date')
+        ? new Date(`${text('date')}T00:00`).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
+        : '';
+
+      const lines = [
+        "Hi, I'd like a custom tour.",
+        '',
+        `Places: ${text('places')}`,
+        text('from') ? `Starting from: ${text('from')}` : '',
+        start ? `Start date: ${start}` : '',
+        `Duration: ${plural(days, 'day')}`,
+        `Group: ${plural(adults, 'adult')}${children > 0 ? `, ${plural(children, 'child')}` : ''}`,
+        `Vehicle: ${text('vehicle') || 'Any, please suggest'}`,
+      ].filter((line, i) => line !== '' || i === 1);
+
+      const url = `https://wa.me/${form.dataset.wa}?text=${encodeURIComponent(lines.join('\n'))}`;
+      window.open(url, '_blank', 'noopener');
+    });
+  }
+</script>
