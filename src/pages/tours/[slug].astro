@@ -74,7 +74,7 @@ const message = `Hi, I'd like to enquire about the ${tour.name} tour package.`;
         }
       </ul>
       <p class="mt-5 text-sm text-muted">
-        Want something different? <a href="/tours#custom" class="font-medium text-ink underline underline-offset-4">Ask for a custom tour</a>.
+        Want something different? <a href={`/tours?destination=${encodeURIComponent(tour.name)}#custom`} class="font-medium text-ink underline underline-offset-4">Ask for a custom tour</a>.
       </p>
     </div>
   </section>

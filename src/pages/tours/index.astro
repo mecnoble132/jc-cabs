@@ -4,10 +4,7 @@ import TourCard from '../../components/TourCard.astro';
 import Button from '../../components/Button.astro';
 import Icon from '../../components/Icon.astro';
 import tours from '../../data/tours.json';
-import { waLink } from '../../lib/contact';
-
-const customMessage =
-  "Hi, I'd like a custom tour. Destinations: \nNumber of days: \nGroup size: \nPreferred vehicle: ";
+import CustomTourForm from '../../components/CustomTourForm.astro';
 ---
 
 <BaseLayout
@@ -20,7 +17,7 @@ const customMessage =
       These are suggested destinations, not fixed packages. Every tour is customised for you and planned with you on WhatsApp.
     </p>
     <div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
-      <Button href={waLink(customMessage)} variant="whatsapp" track="tour_enquire">
+      <Button href="#custom" variant="whatsapp" track="tour_enquire">
         <Icon name="chat" class="h-4 w-4" />
         Plan a custom tour
       </Button>
@@ -40,18 +37,15 @@ const customMessage =
     </div>
   </section>
 
-  <section id="custom" class="bg-cream">
+  <section id="custom" class="scroll-mt-16 bg-cream lg:scroll-mt-20">
     <div class="section">
       <h2>Want something different?</h2>
       <p class="mt-2 max-w-xl text-muted">
         We plan custom tours to your request. Tell us the places, the number of days, your group size and the
-        vehicle you prefer, and we will send you a quote.
+        vehicle you prefer, and we will send you a plan and a quote on WhatsApp.
       </p>
       <div class="mt-5">
-        <Button href={waLink(customMessage)} variant="whatsapp" track="tour_enquire">
-          <Icon name="chat" class="h-4 w-4" />
-          Plan my tour on WhatsApp
-        </Button>
+        <CustomTourForm />
       </div>
     </div>
   </section>
