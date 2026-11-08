@@ -2,7 +2,7 @@
 
 The website for **JC Cabs**, a taxi service in Trivandrum and Kochi, Kerala: airport transfers, local and outstation trips, and Kerala tour packages.
 
-- **Live site:** https://jc-cabs.vercel.app
+- **Live site:** https://www.jccabstvm.com (also accessible via https://jc-cabs.vercel.app)
 - **Built with:** [Astro](https://docs.astro.build) and [Tailwind CSS](https://tailwindcss.com), with a little plain JavaScript
 - **Hosted on:** [Vercel](https://vercel.com). Every push to `main` deploys automatically.
 
